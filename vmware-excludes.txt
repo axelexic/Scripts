@@ -1,0 +1,9 @@
+*.vmtm
+*.vmem
+*.vmsn
+*.vmsd
+*.vmss
+*.hlog
+*.lck
+*.log
+quicklook-cache.png
