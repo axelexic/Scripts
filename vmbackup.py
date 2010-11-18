@@ -14,6 +14,8 @@ BACKUPDIR="/Users/swami/Workspace/vm"
 VMDIRS="/Volumes/Storage/vm"
 VMWARE_INSTALL_DIR="/Library/Application Support/VMware Fusion"
 
+EXCLUDE_FILE_NAME=".excludes"
+
 RSYNC="/Users/swami/Workspace/MacPorts/bin/rsync"
 RSYNC_FLAGS=["--archive", "--hard-links", "--sparse", "--verbose", "--stats", "--fileflags"]
 
@@ -45,11 +47,20 @@ def suspend_vm(vmname):
     vmrun=subprocess.Popen(program_args, stdout=subprocess.PIPE);
     vmrun.wait();
 
+
 def execute_rsync(rsync_flags, backup_root):
 
-    program_args=[RSYNC];    
+    program_args=[RSYNC];
     program_args.extend(rsync_flags);
     
+    excluded_files = "%s/%s"%(backup_root,EXCLUDE_FILE_NAME);
+    
+    print "Checking for excluded file: '%s'"%excluded_files;
+    
+    if os.access(excluded_files, os.R_OK):
+        print "Adding excluded files: ",excluded_files;
+        program_args.append('--exclude-from=%s'%(excluded_files));
+
     destination_log= "%s/rsync.log"%backup_root;
     destination_err= "%s/rsync-err.log"%backup_root;
     
@@ -109,7 +120,8 @@ def backup_process(vmname):
     for old,new in backup_dir_sorted:
         new_dir="%s/%.2d"%(backup_root,new);
         try:
-            os.rename(old, new_dir);
+            if not '--dry-run' in rsync_flags:
+                os.rename(old, new_dir);
             # Here we append link dest paths.
             rsync_flags.append('--link-dest=../%0.2d/'%(new))
         except Exception, e:
@@ -137,7 +149,9 @@ def backup_process(vmname):
 
 
 if __name__=='__main__':
-    
+    if '--dry-run' in sys.argv:
+        RSYNC_FLAGS.append('--dry-run');
+
     # Before doing anything, check to see if we have read permission on
     # vmdirs and write permission on the backup dir.
     if not os.access(BACKUPDIR, os.R_OK|os.W_OK|os.X_OK):

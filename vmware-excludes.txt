@@ -1,3 +1,5 @@
+appListCache
+*.nvram
 *.vmtm
 *.vmem
 *.vmsn
