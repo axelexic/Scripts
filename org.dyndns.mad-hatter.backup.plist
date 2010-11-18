@@ -2,24 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UserName</key>
+	<string>swami</string>
 	<key>Label</key>
 	<string>org.dyndns.axelexic.vmbackup</string>
-	<key>RunAtLoad</key>
+	<key>Nice</key>
+	<integer>20</integer>
+	<key>LowPriorityIO</key>
 	<true/>
+	<!--	<key>RunAtLoad</key>
+	<true/> -->
 	<key>Program</key>
-	<string>/usr/bin/open</string>
+	<string>/Users/swami/Workspace/local/bin/vmbackup.py</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/bin/open</string>
-		<string>-a</string>
-		<string>TextEdit</string>
+		<string>/Users/swami/Workspace/local/bin/vmbackup.py</string>
+		<!-- <string>--dry-run</string> -->
 	</array>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Hour</key>
-		<integer>21</integer>
+		<integer>23</integer>
 		<key>Minute</key>
-		<integer>30</integer>
+		<integer>45</integer>
+		<key>Weekday</key>
+		<string>4</string>
 	</dict>
 </dict>
 </plist>
