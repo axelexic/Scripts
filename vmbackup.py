@@ -54,11 +54,8 @@ def execute_rsync(rsync_flags, backup_root):
     program_args.extend(rsync_flags);
     
     excluded_files = "%s/%s"%(backup_root,EXCLUDE_FILE_NAME);
-    
-    print "Checking for excluded file: '%s'"%excluded_files;
-    
+        
     if os.access(excluded_files, os.R_OK):
-        print "Adding excluded files: ",excluded_files;
         program_args.append('--exclude-from=%s'%(excluded_files));
 
     destination_log= "%s/rsync.log"%backup_root;
@@ -141,7 +138,8 @@ def backup_process(vmname):
             (blan,oldest)=backup_dir_sorted[0];
             oldest_file="%s/%.2d"%(backup_root,oldest);
             print "Deleting: %s"%(oldest_file);
-            shutil.rmtree(oldest_file)
+            if not '--dry-run' in rsync_flags:
+                shutil.rmtree(oldest_file)
         
     except IndexError, ie:
         print backup_dir_sorted;
@@ -149,8 +147,11 @@ def backup_process(vmname):
 
 
 if __name__=='__main__':
+
+    is_dry_run=False;
     if '--dry-run' in sys.argv:
         RSYNC_FLAGS.append('--dry-run');
+        is_dry_run=True;
 
     # Before doing anything, check to see if we have read permission on
     # vmdirs and write permission on the backup dir.
@@ -161,11 +162,12 @@ if __name__=='__main__':
     if not os.access(VMDIRS, os.R_OK):
         print "You do not read permission for VMDIRS dir: %s"%VMDIRS;
         sys.exit(-2);
-        
-    running_vm=list_vm();
+    
+    if not is_dry_run:
+        running_vm=list_vm();
     # First suspend all the running VMs.
-    for vm in running_vm:
-        suspend_vm(vm);
+        for vm in running_vm:
+            suspend_vm(vm);
     
     # Backup the entire set of VMs, running or not.
     VMS=[VMDIRS+'/'+x for x in os.listdir(VMDIRS) if x.endswith(".vmwarevm")];
@@ -175,8 +177,8 @@ if __name__=='__main__':
         backup_process(vm);
         
     # Restart the old previously running VMs
-    
-    for vm in running_vm:
-        start_vm(vm);
+    if not is_dry_run:
+        for vm in running_vm:
+            start_vm(vm);
         
     # And we are done!
