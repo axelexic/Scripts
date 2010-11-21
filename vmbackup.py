@@ -76,8 +76,6 @@ def execute_rsync(rsync_flags, backup_root):
     stderr_file.write(program_args.__str__( ));
     stderr_file.write("\n--\n\n");
 
-    print "Executing ", program_args;
-
     rsync=subprocess.Popen(program_args, stdout=stdout_file, stderr=stderr_file);
     rsync.wait();
 
