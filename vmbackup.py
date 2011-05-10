@@ -8,9 +8,9 @@ import shutil;
 import sys;
 import time;
 
-MAX_BACKUPS=8 # Two months worth.
+MAX_BACKUPS=4 # Two months worth.
 
-BACKUPDIR="/Users/swami/Workspace/vm"
+BACKUPDIR="/Volumes/Backup/vm"
 VMDIRS="/Volumes/Storage/vm"
 VMWARE_INSTALL_DIR="/Library/Application Support/VMware Fusion"
 
@@ -76,6 +76,8 @@ def execute_rsync(rsync_flags, backup_root):
     stderr_file.write(program_args.__str__( ));
     stderr_file.write("\n--\n\n");
 
+    print "Executing ", program_args;
+
     rsync=subprocess.Popen(program_args, stdout=stdout_file, stderr=stderr_file);
     rsync.wait();
 
@@ -132,7 +134,7 @@ def backup_process(vmname):
     execute_rsync(rsync_flags, backup_root);
         
     try:
-        if len(backup_dir_sorted) > MAX_BACKUPS:
+        if len(backup_dir_sorted) > (MAX_BACKUPS-1):
             (blan,oldest)=backup_dir_sorted[0];
             oldest_file="%s/%.2d"%(backup_root,oldest);
             print "Deleting: %s"%(oldest_file);
@@ -143,6 +145,15 @@ def backup_process(vmname):
         print backup_dir_sorted;
     
 
+def is_nonroot_mountpoint():
+    backup_dir=BACKUPDIR
+    while backup_dir != '/':
+        if path.ismount(backup_dir):
+            return True
+        else:
+            backup_dir = path.dirname(backup_dir)
+    return False
+        
 
 if __name__=='__main__':
 
@@ -160,6 +171,10 @@ if __name__=='__main__':
     if not os.access(VMDIRS, os.R_OK):
         print "You do not read permission for VMDIRS dir: %s"%VMDIRS;
         sys.exit(-2);
+        
+    if not is_nonroot_mountpoint():
+        print "Your backup directory is mounted on '/' so bailing out..."
+        sys.exit(-3);
     
     if not is_dry_run:
         running_vm=list_vm();

@@ -3,28 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>org.dyndns.axelexic.vmbackup</string>
+	<string>org.dyndns.mad-hatter.vmbackup</string>
 	<key>LowPriorityIO</key>
 	<true/>
 	<key>Program</key>
-	<string>/Users/swami/Workspace/local/bin/vmbackup.py</string>
+	<string>/usr/local/bin/vmbackup.py</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/swami/Workspace/local/bin/vmbackup.py</string>
+		<string>/usr/local/bin/vmbackup.py</string>
 	</array>
 	<key>StartCalendarInterval</key>
 	<array>
 		<dict>
 			<key>Minute</key>
-			<integer>45</integer>
+			<integer>0</integer>
 			<key>Hour</key>
-			<integer>9</integer>
+			<integer>4</integer>
 			<key>Weekday</key>
 			<integer>0</integer>
 		</dict>
 	</array>
 	<key>UserName</key>
-	<string>swami</string>
+	<string>keepguessing</string>
 	<key>Nice</key>
 	<integer>10</integer>
 </dict>
