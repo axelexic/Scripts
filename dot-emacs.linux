@@ -7,20 +7,10 @@
 
 
 ;; First add my own load path to allow xemacs and stuff like that
-(add-to-list 'load-path "~/.emacs.d/lib/ecb")
-(setq load-path (cons "~/.emacs.d/lib" load-path))
-(load "~/.emacs.d/lib/haskell/haskell-site-file")
+
+
 (require 'xcscope)
 (require 'tabbar)
-(require 'gas-mode)
-(add-to-list 'auto-mode-alist '("\\.S\\'" . gas-mode))
-(add-to-list 'auto-mode-alist '("\\.s\\'" . gas-mode))
-(add-to-list 'auto-mode-alist '("\\.asm\\'" . gas-mode))
-(setq mac-command-key-is-meta 1)
-
-;; (require 'ecb)
-;; (require 'ecb-autoloads)
-
 
 (setq default-frame-alist '(
 			    (tool-bar-lines         . 0)
@@ -34,21 +24,15 @@
 			    (default-fringes-outside-margins . 0)
 			    (default-left-fringe-width . 0)
 			    (default-left-margin-width . 0)
-			    ; (width  . 100)
-			    ; (height . 52)
-			    ; (top . 0)
-			    ; (left . 100)
+			    (width  . 200) ;; set for 27inch iMac
+			    (height . 65)
+			    (top . 20)
+			    (left . 150)
 			    ))
 
 
-;(split-window-horizontally)
-
-;; First things first.
-
-
-
+(split-window-horizontally)
 (setq inhibit-startup-message t)
-(setq mac-emulate-three-button-mouse t)
 (setq make-backup-files nil)
 (setq vc-make-backup-files nil)
 (setq scroll-step 0)
@@ -61,8 +45,6 @@
 (setq line-number-mode 1)
 (setq column-number-mode 1)
 (setq fill-column 80)
-
-(setq mac-option-modifier 'hyper)
 
 (global-set-key [(hyper right)] `next-multiframe-window)
 (global-set-key [(hyper left)]  `previous-multiframe-window)
@@ -135,14 +117,6 @@
 (add-hook `html-mode-hook `turn-on-auto-fill)
 (add-hook `sgml-mode-hook `turn-on-auto-fill)
 
-;; Latex mode.
-;; (add-hook `text-mode-hook (lambda () (flyspell-mode 1)))
-;;flyspell hooking (for error coloring and 3 mouse button menu)
-;; (define-key global-map [(control tab)] `flyspell-auto-correct-word)
-
-;; (add-hook `text-mode-hook (lambda () (abbrev-mode 1)))
-;; (quietly-read-abbrev-file "~/.emacs.d/abbrev_defs.el")
-
 (add-hook `text-mode-hook `turn-on-auto-fill)
 (setq tex-default-mode `latex-mode)
 (add-hook `latex-mode-hook `turn-on-auto-fill)
@@ -196,11 +170,6 @@
         ;; Turn on font-lock in all modes that support it
        (global-font-lock-mode t)))
 
-(defun goto-matching-paren-or-insert (arg)
-(interactive "p")
-(cond ((looking-at "[([{]") (forward-sexp 1) (backward-char))
-      ((looking-at "[])}]") (forward-char) (backward-sexp 1))
-       (t (self-insert-command (or arg 1)))))
 (global-set-key "%" `goto-matching-paren-or-insert)
 
 
@@ -211,163 +180,13 @@
 (setq eshell-save-history-on-exit t) 
 
 
-
-(setq minibuffer-max-depth nil)
-(put `upcase-region `disabled nil)
-(require `setnu)
-
-(defun toggle-setnu-mode ()
-      (interactive)
-      (if setnu-mode
-        (setnu-mode -1)
-        (setnu-mode 1)))
-
-(set-face-attribute
- `tabbar-default-face nil
- :background "gray60")
-(set-face-attribute
- `tabbar-unselected-face nil
- :background "gray85"
- :foreground "gray30"
- :box nil)
-(set-face-attribute
- `tabbar-selected-face nil
- :background "#f2f2f6"
- :foreground "black"
- :box nil)
-(set-face-attribute
- `tabbar-button-face nil
- :box `(:line-width 1 :color "gray72" :style released-button))
-(set-face-attribute
- `tabbar-separator-face nil
- :height 0.7)
-
 (tabbar-mode 1)
 (define-key global-map [(meta {)] `tabbar-backward)
 (define-key global-map [(meta })] `tabbar-forward)
 
 
-(setq auto-mode-alist
-      (append auto-mode-alist
-              '(("\\.[hg]s$"  . haskell-mode)
-                ("\\.hic?$"     . haskell-mode)
-                ("\\.hsc$"     . haskell-mode)
-  ("\\.chs$"    . haskell-mode)
-                ("\\.l[hg]s$" . literate-haskell-mode))))
-(autoload 'haskell-mode "haskell-mode"
-   "Major mode for editing Haskell scripts." t)
-(autoload 'literate-haskell-mode "haskell-mode"
-   "Major mode for editing literate Haskell scripts." t)
-
-;adding the following lines according to which modules you want to use:
-; (require 'inf-haskell)
-
-; (add-hook 'haskell-mode-hook 'turn-on-font-lock)
-; (add-hook 'haskell-mode-hook 'turn-off-haskell-decl-scan)
-; (add-hook 'haskell-mode-hook 'turn-off-haskell-doc-mode)
-; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-hugs)
-; (add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
-; (add-hook 'haskell-mode-hook 
-;   (function
-;    (lambda ()
-;      (setq haskell-program-name "ghci")
-;      (setq haskell-ghci-program-name "ghci6"))))
-
-
-(defun unicode-symbol (name)
-   "Translate a symbolic name for a Unicode character -- e.g., LEFT-ARROW                                      
- or GREATER-THAN into an actual Unicode character code. "
-   (decode-char 'ucs (case name                                             
-			('left-arrow 8592)
-                       ('up-arrow 8593)
-                       ('right-arrow 8594)
-                       ('down-arrow 8595)                                                
-			('double-vertical-bar #X2551)                  
-                       ('equal #X003d)
-                       ('not-equal #X2260)
-                       ('identical #X2261)
-                       ('not-identical #X2262)
-                       ('less-than #X003c)
-                       ('greater-than #X003e)
-   		        ('less-than-or-equal-to #X2264)
-            		('greater-than-or-equal-to #X2265)                        
-                       ('logical-and #X2227)
-                       ('logical-or #X2228)
-                       ('logical-neg #X00AC)                                                  
-                       ('nil #X2205)
-                       ('horizontal-ellipsis #X2026)
-                       ('double-exclamation #X203C)
-                       ('prime #X2032)
-                       ('double-prime #X2033)
-                       ('for-all #X2200)
-                       ('there-exists #X2203)
-                       ('element-of #X2208)              
-                       ('square-root #X221A)
-                       ('squared #X00B2)
-                       ('cubed #X00B3)                                            
-                       ('lambda #X03BB)
-                       ('alpha #X03B1)
-                       ('beta #X03B2)
-                       ('gamma #X03B3)
-                       ('delta #X03B4))))
-(defun substitute-pattern-with-unicode (pattern symbol)
-    "Add a font lock hook to replace the matched part of PATTERN with the                                       
-     Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
-    (interactive)
-    (font-lock-add-keywords
-    nil `((,pattern 
-           (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                     ,(unicode-symbol symbol)
-                                     'decompose-region)
-                             nil))))))
-
-(defun substitute-patterns-with-unicode (patterns)
-   "Call SUBSTITUTE-PATTERN-WITH-UNICODE repeatedly."
-   (mapcar #'(lambda (x)
-               (substitute-pattern-with-unicode (car x)
-                                                (cdr x)))
-           patterns))
-
-(defun haskell-unicode ()
- (interactive)
- (substitute-patterns-with-unicode
-  (list (cons "\\(<-\\)" 'left-arrow)
-        (cons "\\(->\\)" 'right-arrow)
-        (cons "\\(==\\)" 'identical)
-        (cons "\\(/=\\)" 'not-identical)
-        (cons "\\(()\\)" 'nil)
-        (cons "\\<\\(sqrt\\)\\>" 'square-root)
-        (cons "\\(&&\\)" 'logical-and)
-        (cons "\\(||\\)" 'logical-or)
-        (cons "\\<\\(not\\)\\>" 'logical-neg)
-        (cons "\\(>\\)\\[^=\\]" 'greater-than)
-        (cons "\\(<\\)\\[^=\\]" 'less-than)
-        (cons "\\(>=\\)" 'greater-than-or-equal-to)
-        (cons "\\(<=\\)" 'less-than-or-equal-to)
-        (cons "\\<\\(alpha\\)\\>" 'alpha)
-        (cons "\\<\\(beta\\)\\>" 'beta)
-        (cons "\\<\\(gamma\\)\\>" 'gamma)
-        (cons "\\<\\(delta\\)\\>" 'delta)
-        (cons "\\(''\\)" 'double-prime)
-        (cons "\\('\\)" 'prime)
-        (cons "\\(!!\\)" 'double-exclamation)
-        (cons "\\(\\.\\.\\)" 'horizontal-ellipsis))))
-
-;; (add-hook 'haskell-mode-hook 'haskell-unicode)
-
-
-(setenv "PATH" (concat (getenv "PATH") ":/home/swami/Workspace/local/bin"))
-
-(setenv "DYLD_LIBRARY_PATH" (concat (getenv "DYLD_LIBRARY_PATH") ":/home/swami/Workspace/local/lib"))
-
-(setq exec-path (append exec-path  '("/usr/local/bin" "/home/swami/Workspace/local/bin")))
-
-
 (copy-face `default  `minibuffer-prompt)
 (make-face-bold `minibuffer-prompt nil 1)
-(set-face-foreground `minibuffer-prompt "White")
 
 (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
 
@@ -375,30 +194,6 @@
       'default-frame-alist
       '(font . "-*-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-*-*-*-*"))
 
-
-(defun my-bell-function ()
-  (unless (memq this-command
-     '(isearch-abort abort-recursive-edit exit-minibuffer
-              keyboard-quit mwheel-scroll down up next-line previous-line
-              backward-char forward-char))
-    (ding)))
-
-(setq ring-bell-function 'my-bell-function)
-
-(defun fullscreen (&optional f)
-      (interactive)
-      (let ((current-value (frame-parameter nil 'fullscreen)))
-           (set-frame-parameter nil 'fullscreen
-                                (if (equal 'fullboth current-value)
-                                    (if (boundp 'old-fullscreen) old-fullscreen nil)
-                                    (progn (setq old-fullscreen current-value)
-                                           'fullboth)))))
-    ; Make new frames fullscreen by default. Note: this hook doesn't do
-    ; anything to the initial frame if it's in your .emacs, since that file is
-    ; read _after_ the initial frame is created.
-    ; (add-hook 'after-make-frame-functions 'toggle-fullscreen)
-
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(setq make-backup-files nil)
