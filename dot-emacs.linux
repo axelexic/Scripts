@@ -12,6 +12,11 @@
 (require 'xcscope)
 (require 'tabbar)
 
+(add-to-list 'load-path "~/.emacs.d")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
 (setq default-frame-alist '(
 			    (tool-bar-lines         . 0)
 			    (menu-bar-lines         . 0)
@@ -24,14 +29,14 @@
 			    (default-fringes-outside-margins . 0)
 			    (default-left-fringe-width . 0)
 			    (default-left-margin-width . 0)
-			    (width  . 200) ;; set for 27inch iMac
-			    (height . 65)
-			    (top . 20)
-			    (left . 150)
+			    (width  . 141) ;; set for 27inch iMac
+			    (height . 41)
+			    (top . 0)
+			    (left . 0)
 			    ))
 
 
-(split-window-horizontally)
+;; (split-window-horizontally)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
 (setq vc-make-backup-files nil)
@@ -41,6 +46,8 @@
 (setq next-screen-context-lines 1)
 (display-time)
 (show-paren-mode 1)
+
+(toggle-truncate-lines 1)
 
 (setq line-number-mode 1)
 (setq column-number-mode 1)
@@ -55,20 +62,24 @@
 (global-set-key "\C-j" `fill-region)
 (global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
 
-;(define-key global-map [f2]           `find-file)
-;(define-key global-map [f3]           `copy-region-as-kill)
 
+
+
+(define-key global-map  "\C-c\C-i"  `cscope-set-initial-directory)
+(define-key global-map  "\C-c\C-r" `cscope-unset-initial-directory)
+(define-key global-map  [f2]  `cscope-find-this-file)
+(define-key global-map  [f3]  `cscope-find-this-text-string)
+(define-key global-map  [f4]  `cscope-find-this-symbol)
+(define-key global-map  [f5]  `cscope-pop-mark)
+(define-key global-map  [f6]  `cscope-find-global-definition-no-prompting)
+(define-key global-map  [f7]  `cscope-find-global-definition)
 (define-key global-map [f8]           `goto-line)
-(define-key global-map [\C-f8]        `what-line)
 (define-key global-map [f9]          `kill-ring-save)
+(define-key global-map [\C-f8]        `what-line)
 (define-key global-map [\C-kp-end]    `end-of-line)
 (define-key global-map [\C-kp-right]  `mark-sexp)
-(define-key global-map  "\C-c\C-i"  `cscope-set-initial-directory)
-(define-key global-map  "\C-c\C-r"  `cscope-unset-initial-directory)
-(define-key global-map  [f4]  `cscope-find-this-symbol)
-(define-key global-map  [f7]  `cscope-find-global-definition)
-(define-key global-map  [f6]  `cscope-find-global-definition-no-prompting)
-(define-key global-map  [f5]  `cscope-pop-mark)
+
+
 ; (define-key global-map [(meta .)]  `point-to-register)
 (define-key global-map [(meta ,)]  `cscope-pop-mark)		  
 
@@ -170,7 +181,7 @@
         ;; Turn on font-lock in all modes that support it
        (global-font-lock-mode t)))
 
-(global-set-key "%" `goto-matching-paren-or-insert)
+(global-set-key [(f12)] `goto-matching-paren-or-insert)
 
 
 (setq transient-mark-mode t)
