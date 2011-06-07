@@ -103,10 +103,27 @@ fi
 ANDROID_HOME=/mnt/hgfs/Android
 
 # Don't want to keep doing this
-if [ -f $ANDROID_HOME/src/build/envsetup.sh ]; then
-	. $ANDROID_HOME/src/build/envsetup.sh
-fi
 
-PATH=/opt/eclipse:$ANDROID_HOME/sdk/tools:$ANDROID_HOME/sdk/platform-tools:$ANDROID_HOME/ndk:$PATH
+function android_build_env {
+	if [ -f $ANDROID_HOME/src/build/envsetup.sh ]; then
+		. $ANDROID_HOME/src/build/envsetup.sh
+	fi
+}
 
-export PATH
+function android_sdk_env {
+	PATH=/opt/eclipse:$ANDROID_HOME/sdk/tools:$ANDROID_HOME/sdk/platform-tools:$PATH
+	export PATH
+}
+
+
+function android_ndk_env {
+	android_sdk_env
+	PATH=$ANDROID_HOME/ndk:$PATH
+	export PATH
+}
+
+function vm_home {
+	cd $ANDROID_HOME
+}
+
+
