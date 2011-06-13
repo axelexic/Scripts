@@ -127,3 +127,35 @@ function vm_home {
 }
 
 
+function src_find {
+	EXPECTED_ARGS=2
+	
+	if [ $# -ne $EXPECTED_ARGS ] 
+	then
+		echo "Usage: src_find regex directory_to_find"
+		echo "       (e.g., $src_find '.*\.\(c\|h\|cpp\)' . )"
+		return 244
+	fi
+
+	find $2 -type f -iregex "$1" -print
+	echo 
+}
+
+
+function src_grep(){
+
+        EXPECTED_ARGS=2
+
+        if [ $# -ne $EXPECTED_ARGS ]
+
+        then
+                echo "Usage: src_grep regex search_keyword"
+                echo "       (e.g. $ src_grep '.*\.\(c\|h\|cpp\)' \"hello world\n\" )  "
+                return
+        fi
+
+        find . -type f -iregex "$1" -print0 | xargs -0 grep --color -n "$2"
+        # find -E . -type f -iregex '.*\.\(c\|h\|cpp\)' -print0 | xargs -0 grep --color -n "$@"
+
+}
+
