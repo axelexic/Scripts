@@ -1,13 +1,12 @@
-NATIVE_APP	:= hello
-OBJS		:= hello.o
-PLATFORM	:= 9				# which platform to use
-BUILD_VARIANT	:= arm-linux-androideabi-4.4.3  # compiler toolchain to use
+NATIVE_APP	:= hello_native
+OBJS		:= hello_native.o
+PLATFORM	:= 9
+BUILD_VARIANT	:= arm-linux-androideabi-4.4.3
 BUILD_PLATFORM	:= linux-x86
-NDK_HOME	:= /mnt/hgfs/Android/ndk        # Location of installed NDK
-CROSS_COMPILER  := arm-linux-androideabi-	# prefix of toolchains
+NDK_HOME	:= /mnt/hgfs/Android/ndk
+CROSS_COMPILER  := arm-linux-androideabi-
 
 
-CRT0		:= $(SYSROOT)/usr/lib/crtbegin_dynamic.o
 
 LD_SO		:= /system/bin/linker
 
@@ -25,6 +24,9 @@ LDFLAGS		:= --sysroot=$(SYSROOT) \
 		   -nostdlib
  
 LIBS		:= -lc 
+
+CRT0		:= $(SYSROOT)/usr/lib/crtbegin_dynamic.o
+
 
 CC	:= $(BUILD_BIN)/$(CROSS_COMPILER)gcc
 CPP	:= $(BUILD_BIN)/$(CROSS_COMPILER)g++
