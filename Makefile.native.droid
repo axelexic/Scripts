@@ -1,0 +1,39 @@
+NATIVE_APP	:= hello
+OBJS		:= hello.o
+PLATFORM	:= 9				# which platform to use
+BUILD_VARIANT	:= arm-linux-androideabi-4.4.3  # compiler toolchain to use
+BUILD_PLATFORM	:= linux-x86
+NDK_HOME	:= /mnt/hgfs/Android/ndk        # Location of installed NDK
+CROSS_COMPILER  := arm-linux-androideabi-	# prefix of toolchains
+
+
+CRT0		:= $(SYSROOT)/usr/lib/crtbegin_dynamic.o
+
+LD_SO		:= /system/bin/linker
+
+SYSROOT		:=$(NDK_HOME)/platforms/android-$(PLATFORM)/arch-arm
+BUILD_HOME	:=$(NDK_HOME)/toolchains/$(BUILD_VARIANT)/prebuilt/$(BUILD_PLATFORM)
+BUILD_BIN	:=$(BUILD_HOME)/bin
+
+DEBUG		:= -g
+CFLAGS		:= $(DEBUG) -Wall -Wextra --sysroot=$(SYSROOT)
+INCLUDES	:= -I$(SYSROOT)/usr/include -I.
+
+LDFLAGS		:= --sysroot=$(SYSROOT) \
+		   -Wl,-rpath-link=$(SYSROOT)/usr/lib,-dynamic-linker=$(LD_SO)\
+		   -L$(SYSROOT)/usr/lib \
+		   -nostdlib
+ 
+LIBS		:= -lc 
+
+CC	:= $(BUILD_BIN)/$(CROSS_COMPILER)gcc
+CPP	:= $(BUILD_BIN)/$(CROSS_COMPILER)g++
+LD	:= $(BUILD_BIN)/$(CROSS_COMPILER)ld
+AS	:= $(BUILD_BIN)/$(CROSS_COMPILER)gcc
+
+
+$(NATIVE_APP) : $(OBJS)
+	$(CPP) $(LDFLAGS) -o $@ $(OBJS) $(CRT0) $(LIBS)
+
+%.o : %.c
+	$(CPP) -c $(CFLAGS) $(INCLUDES) $< -o $@
