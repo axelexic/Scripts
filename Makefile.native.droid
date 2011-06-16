@@ -1,41 +1,63 @@
 NATIVE_APP	:= hello_native
 OBJS		:= hello_native.o
+INSTALL_DIR	:= /data/tmp
 PLATFORM	:= 9
-BUILD_VARIANT	:= arm-linux-androideabi-4.4.3
-BUILD_PLATFORM	:= linux-x86
+
 NDK_HOME	:= /mnt/hgfs/Android/ndk
+SDK_HOME	:= /mnt/hgfs/Android/sdk
+
+BUILD_VARIANT	:= arm-linux-androideabi-4.4.3
 CROSS_COMPILER  := arm-linux-androideabi-
-
-
-
-LD_SO		:= /system/bin/linker
+BUILD_PLATFORM	:= linux-x86
 
 SYSROOT		:=$(NDK_HOME)/platforms/android-$(PLATFORM)/arch-arm
+LD_SO		:= /system/bin/linker
+
 BUILD_HOME	:=$(NDK_HOME)/toolchains/$(BUILD_VARIANT)/prebuilt/$(BUILD_PLATFORM)
 BUILD_BIN	:=$(BUILD_HOME)/bin
 
 DEBUG		:= -g
 CFLAGS		:= $(DEBUG) -Wall -Wextra --sysroot=$(SYSROOT)
-INCLUDES	:= -I$(SYSROOT)/usr/include -I.
-
+INCLUDES	:= -I.
 LDFLAGS		:= --sysroot=$(SYSROOT) \
-		   -Wl,-rpath-link=$(SYSROOT)/usr/lib,-dynamic-linker=$(LD_SO)\
-		   -L$(SYSROOT)/usr/lib \
-		   -nostdlib
- 
-LIBS		:= -lc 
+		   -Wl,--no-enum-size-warning,-dynamic-linker=$(LD_SO)
 
-CRT0		:= $(SYSROOT)/usr/lib/crtbegin_dynamic.o
+LIBS		:= 
 
-
+# NDK related tools
 CC	:= $(BUILD_BIN)/$(CROSS_COMPILER)gcc
 CPP	:= $(BUILD_BIN)/$(CROSS_COMPILER)g++
 LD	:= $(BUILD_BIN)/$(CROSS_COMPILER)ld
 AS	:= $(BUILD_BIN)/$(CROSS_COMPILER)gcc
 
+# SDK Realated tools
+ADB	:= $(SDK_HOME)/platform-tools/adb
+DX	:= $(SDK_HOME)/platform-tools/dx
+AAPT	:= $(SDK_HOME)/platform-tools/aapt
+AIDL	:= $(SDK_HOME)/platform-tools/aidl
+RSCC	:= $(SDK_HOME)/platform-tools/llvm-rs-cc
+RSCC2	:= $(SDK_HOME)/platform-tools/llvm-rs-cc-2
+DXDUMP	:= $(SDK_HOME)/platform-tools/dexdump
+
 
 $(NATIVE_APP) : $(OBJS)
-	$(CPP) $(LDFLAGS) -o $@ $(OBJS) $(CRT0) $(LIBS)
+	$(CPP) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
 
 %.o : %.c
 	$(CPP) -c $(CFLAGS) $(INCLUDES) $< -o $@
+
+install: $(NATIVE_APP)
+	$(ADB) push $(NATIVE_APP) $(INSTALL_DIR)/$(NATIVE_APP)
+	$(ADB) shell chmod 777 $(INSTALL_DIR)/$(NATIVE_APP)
+
+shell:
+	$(ADB) shell
+
+run:
+	$(ADB) shell $(INSTALL_DIR)/$(NATIVE_APP)
+
+debug:
+	$(GDB_CLIENT) $(NATIVE_APP)
+
+clean:
+	@rm -f $(NATIVE_APP).o $(NATIVE_APP)
