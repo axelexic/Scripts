@@ -12,7 +12,8 @@ MAX_BACKUPS=4 # Two months worth.
 
 BACKUPDIR="/Volumes/Backup/vm"
 VMDIRS="/Volumes/Storage/vm"
-VMWARE_INSTALL_DIR="/Library/Application Support/VMware Fusion"
+# Fusion 4 has a new directory structure
+VMWARE_INSTALL_DIR="/Applications/VMware Fusion.app/Contents/Library"
 
 EXCLUDE_FILE_NAME=".excludes"
 
