@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Menu Key Bindings</key>
+	<dict>
+		<key>Key Bindings</key>
+		<array>
+			<dict>
+				<key>Action</key>
+				<string>toggleToolbarShown:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ToggleToolbar</string>
+				<key>Group</key>
+				<string>View Menu</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.Main</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>^~@h</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Show Toolbar</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleTabBar:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ToggleTabBar</string>
+				<key>Group</key>
+				<string>View Menu</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.Main</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>^$@H</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Show Tab Bar</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>zoomIn:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEDocViewer.CmdDefinition.ZoomIn</string>
+				<key>Group</key>
+				<string>Editor Menu for Documentation</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.DocViewingEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>@+</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Zoom In</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>zoomOut:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEDocViewer.CmdDefinition.ZoomOut</string>
+				<key>Group</key>
+				<string>Editor Menu for Documentation</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.DocViewingEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>@_</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Zoom Out</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignEdgeLeft:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignLeftEdges</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>@[</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Left Edges</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignEdgeRight:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignRightEdges</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>@]</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Right Edges</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignEdgeTop:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignTopEdges</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Top Edges</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignEdgeBottom:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignBottomEdges</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Bottom Edges</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignMidX:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignHorizontalCenters</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Horizontal Centers</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignMidY:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignVerticalCenters</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Vertical Centers</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignBaselines:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignBaselines</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Baselines</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignCenterInContainer:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignHorizontalCenterInContainer</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Horizontal Center In Container</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignMiddleInContainer:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignVerticalCenterInContainer</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Align Vertical Center In Container</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>sendToFront:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.SendToFront</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Send to Front</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>sendToBack:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.SendToBack</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Send to Back</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>sendForward:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.SendForward</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Send Forward</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>sendBackward:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.SendBackward</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Send Backward</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>sizeSelectionToFit:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.SizeToFit</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>@=</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Size to Fit</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleShowingBoundsRectangles:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.ShowBoundsRectangles</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Show Bounds Rectangles</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleShowingLayoutRectangles:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.ShowLayoutRectangles</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Show Layout Rectangles</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleSnapToGuides:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.SnapToGuides</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Snap to Guides</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleAutoresizeSubviews:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.LiveAutoresizing</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Live Autoresizing</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleStructureArea:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.ToggleStructureArea</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Show Document Structure Area</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>revealSelectedObjectsInStructure:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.RevealInDocumentStructure</string>
+				<key>Group</key>
+				<string>Xcode.InterfaceBuilderKit.MenuDefinition.Editor Menu for Interface Builder</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CocoaIntegration.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Reveal in Document Structure</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>menuCmd_expandAllTranscripts:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.IDELogNavigator.CmdDefinition.ExpandAllTranscripts</string>
+				<key>Group</key>
+				<string>Editor Menu for Log</string>
+				<key>GroupID</key>
+				<string>Xcode.IDELogNavigator.MenuDefinition.LogEditor</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>^~@e</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Expand All Transcripts</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>toggleTokenizedEditing:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandID</key>
+				<string>Xcode.IDESourceEditor.CmdDefinition.EditAllInScope</string>
+				<key>Group</key>
+				<string>Editor Menu for Source Code</string>
+				<key>GroupID</key>
+				<string>Xcode.IDESourceEditor.MenuDefinition.Editor</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>^~@e</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Title</key>
+				<string>Edit All in Scope</string>
+			</dict>
+		</array>
+		<key>Version</key>
+		<integer>3</integer>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>profile</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#include &lt;mach/mach_time.h&gt;
+typedef void (^profiled_code_t)(void);
+static double profile(profiled_code_t block){
+	uint64_t start, end;
+	double	timegap;
+	struct mach_timebase_info timebase;
+	
+	if(mach_timebase_info(&amp;timebase) != KERN_SUCCESS){
+		return -1;
+	}
+	
+	start = mach_absolute_time();
+	block();
+	end = mach_absolute_time();
+	
+	timegap = ((double)(end-start))/((double)NSEC_PER_SEC);
+	if ((timebase.numer != 0) &amp;&amp; (timebase.denom != 0)) {
+		timegap = (timegap*timebase.numer*1.0f)/(timebase.denom * 1.0f);
+	}
+	return timegap;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>36E1896A-4012-4F74-9B59-A1D7C84C2591</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Compute the time spent performing some operation using blocks</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Time Profile Code</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

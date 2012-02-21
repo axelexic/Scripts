@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>time2second</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import &lt;mach/mach_time.h&gt;
+
+static double mach_time_to_secs(uint64_t time)
+{
+    double td;
+    static mach_timebase_info_data_t timebase  = {0U,0U};
+    if (timebase.numer == 0 &amp;&amp; timebase.denom == 0) {
+        mach_timebase_info(&amp;timebase);
+    }
+    td = ((double)time * (double)timebase.numer) / (double)timebase.denom;
+    return td/(NSEC_PER_SEC*1.0f);
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0AF7E15D-B07D-4029-B279-FA0B6690BB57</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Converts a time obtained via mach_absolute_time and converts it into a machine specific time in seconds</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Mach Time to Seconds</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
