@@ -7,14 +7,21 @@
 
 
 ;; First add my own load path to allow xemacs and stuff like that
-
-
+(add-to-list 'load-path "~/.emacs.d/lib/ecb")
+(setq load-path (cons "~/.emacs.d/lib" load-path))
+(load "~/.emacs.d/lib/haskell/haskell-site-file")
+(load-library "clang-completion-mode")
 (require 'xcscope)
 (require 'tabbar)
+(require 'gas-mode)
+(add-to-list 'auto-mode-alist '("\\.S\\'" . gas-mode))
+(add-to-list 'auto-mode-alist '("\\.s\\'" . gas-mode))
+(add-to-list 'auto-mode-alist '("\\.asm\\'" . gas-mode))
+(setq mac-command-key-is-meta 1)
 
-(add-to-list 'load-path "~/.emacs.d")
+;; (add-to-list 'load-path "~/.emacs.d/lib")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/lib/ac-dict")
 (ac-config-default)
 
 (setq default-frame-alist '(
@@ -29,15 +36,17 @@
 			    (default-fringes-outside-margins . 0)
 			    (default-left-fringe-width . 0)
 			    (default-left-margin-width . 0)
-			    (width  . 141) ;; set for 27inch iMac
-			    (height . 41)
-			    (top . 0)
-			    (left . 0)
 			    ))
 
 
-;; (split-window-horizontally)
+;(split-window-horizontally)
+
+;; First things first.
+
+
+
 (setq inhibit-startup-message t)
+(setq mac-emulate-three-button-mouse t)
 (setq make-backup-files nil)
 (setq vc-make-backup-files nil)
 (setq scroll-step 0)
@@ -47,11 +56,11 @@
 (display-time)
 (show-paren-mode 1)
 
-(toggle-truncate-lines 1)
-
 (setq line-number-mode 1)
 (setq column-number-mode 1)
 (setq fill-column 80)
+
+(setq mac-option-modifier 'hyper)
 
 (global-set-key [(hyper right)] `next-multiframe-window)
 (global-set-key [(hyper left)]  `previous-multiframe-window)
@@ -60,27 +69,21 @@
 (global-set-key "\C-b" `copy-region-as-kill)
 (global-set-key "\M-g" `goto-line)
 (global-set-key "\C-j" `fill-region)
-(global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
+;; (global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
 
-
-
-
-(define-key global-map  "\C-c\C-i"  `cscope-set-initial-directory)
-(define-key global-map  "\C-c\C-r" `cscope-unset-initial-directory)
-(define-key global-map  [f2]  `cscope-find-this-file)
-(define-key global-map  [f3]  `cscope-find-this-text-string)
-(define-key global-map  [f4]  `cscope-find-this-symbol)
-(define-key global-map  [f5]  `cscope-pop-mark)
-(define-key global-map  [f6]  `cscope-find-global-definition-no-prompting)
-(define-key global-map  [f7]  `cscope-find-global-definition)
-(define-key global-map [f8]           `goto-line)
-(define-key global-map [f9]          `kill-ring-save)
-(define-key global-map [\C-f8]        `what-line)
 (define-key global-map [\C-kp-end]    `end-of-line)
 (define-key global-map [\C-kp-right]  `mark-sexp)
+(define-key global-map  "\C-c\C-i"  `cscope-set-initial-directory)
+(define-key global-map  "\C-c\C-r"  `cscope-unset-initial-directory)
+(define-key global-map  [f1] `cscope-pop-mark)
+(define-key global-map  [f2] `cscope-find-this-text-string)
+(define-key global-map  [f3] `cscope-find-functions-calling-this-function)
+(define-key global-map  [f4]  `cscope-find-this-symbol)
+(define-key global-map  [f5]  `cscope-find-this-file)
+(define-key global-map  [f6]  `cscope-find-global-definition-no-prompting)
+(define-key global-map  [f7]  `cscope-find-global-definition)
 
 
-; (define-key global-map [(meta .)]  `point-to-register)
 (define-key global-map [(meta ,)]  `cscope-pop-mark)		  
 
 (define-key global-map [(meta +)]  `point-to-register)
@@ -93,66 +96,11 @@
 (define-key global-map [(meta c)]  `copy-region-as-kill)
 (define-key global-map [(meta up)] `beginning-of-buffer)
 (define-key global-map [(meta down)]  `end-of-buffer)
-(global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
-
-
-(require `cc-mode)
-(setq indent-tabs-mode nil)
-(setq c-default-style "linux")
-
-;; No tabs; only spaces. 
-(add-hook `c++-mode-hook `(lambda ()
-			    (setq indent-tabs-mode nil)))
-(add-hook `c-mode-hook `(lambda ()
-			  (setq indent-tabs-mode nil)))
-
-;; Let emacs do all the work. Why can't it not even write the code for us :-)
-(setq c-auto-newline 1)
 
 ;; HATE spaces like hell.
 (setq show-trailing-whitespace t)
 
-
-(global-set-key "\C-m" `newline-and-indent)
-(add-hook `c++-mode-hook `turn-on-auto-fill)
-(add-hook `c-mode-hook `turn-on-auto-fill)
-(c-toggle-hungry-state 1)
-
-(defun run-save-and-compile ()
-  (interactive "")
-  (save-buffer 0)
-  (compile "make"))
-
-(define-key c-mode-map "\C-c\C-c" `run-save-and-compile)
-
-(add-hook `html-mode-hook `turn-on-auto-fill)
-(add-hook `sgml-mode-hook `turn-on-auto-fill)
-
-(add-hook `text-mode-hook `turn-on-auto-fill)
-(setq tex-default-mode `latex-mode)
-(add-hook `latex-mode-hook `turn-on-auto-fill)
-(add-hook `latex-mode-hook (function (lambda() (local-set-key [\C-return] `tex-file))))
-
-
-(add-hook `c++-mode-hook `(lambda ()
-			    (setq fill-column 80)))
-(add-hook `c-mode-hook `(lambda ()
-			  (setq fill-column 80)))
-
-(add-hook `html-mode-hook `(lambda ()
-			    (setq fill-column 80)))
-
-(add-hook `latex-mode-hook `(lambda ()
-			    (setq fill-column 80)))
-
-
-(add-hook `c++-mode-hook `(lambda ()
-			    (setq comment-column 50)))
-(add-hook `c-mode-hook `(lambda ()
-			  (setq comment-column 50)))
-
-
- (cond ((fboundp `global-font-lock-mode)
+(cond ((fboundp `global-font-lock-mode)
        (setq font-lock-face-attributes
  	     `((font-lock-comment-face       "Orchid") ;MediumOrchid
  	       (font-lock-string-face        "Red1") ;  MediumPurple1, IndianRed
@@ -160,28 +108,33 @@
  	       (font-lock-keyword-face       "DeepSkyBlue1");Magenta, MediumBlue
  	       (font-lock-variable-name-face "yellow")     ;OrangeRed
  	       (font-lock-type-face          "Green1")
- 	      ;; (font-lock-reference-face     "greenyellow")    ;LimeGreen
- 	      ;; (font-lock-doc-string-face    "light slate blue")
- 	      (font-lock-function-name-face "deep pink")
+	       ;; (font-lock-reference-face     "greenyellow")    ;LimeGreen
+	       ;; (font-lock-doc-string-face    "light slate blue")
+	       (font-lock-function-name-face "deep pink")
  	       ))
- 
-        ;; Load the font-lock package.
-        (require `font-lock)
-        ;; Maximum colors
-        (setq font-lock-maximum-decoration t)
-        ;;(set-face-background `font-lock-function-name-face "white")
-        (set-face-background `show-paren-match-face "pale green")
-        (set-face-foreground `show-paren-match-face "black")
-        (make-face-bold `show-paren-match-face)
-        (set-face-background `show-paren-mismatch-face "red")
-        (set-face-foreground `show-paren-mismatch-face "snow")
-        (make-face-bold `show-paren-mismatch-face)
-	(make-face-bold `font-lock-function-name-face )
-	(make-face-italic `font-lock-keyword-face)
-        ;; Turn on font-lock in all modes that support it
+       
+       ;; Load the font-lock package.
+       (require `font-lock)
+       ;; Maximum colors
+       (setq font-lock-maximum-decoration t)
+       ;;(set-face-background `font-lock-function-name-face "white")
+       (set-face-background `show-paren-match-face "pale green")
+       (set-face-foreground `show-paren-match-face "black")
+       (make-face-bold `show-paren-match-face)
+       (set-face-background `show-paren-mismatch-face "red")
+       (set-face-foreground `show-paren-mismatch-face "snow")
+       (make-face-bold `show-paren-mismatch-face)
+       (make-face-bold `font-lock-function-name-face )
+       (make-face-italic `font-lock-keyword-face)
+       ;; Turn on font-lock in all modes that support it
        (global-font-lock-mode t)))
 
-(global-set-key [(f12)] `goto-matching-paren-or-insert)
+(defun goto-matching-paren-or-insert (arg)
+(interactive "p")
+(cond ((looking-at "[([{]") (forward-sexp 1) (backward-char))
+      ((looking-at "[])}]") (forward-char) (backward-sexp 1))
+       (t (self-insert-command (or arg 1)))))
+(global-set-key "%" `goto-matching-paren-or-insert)
 
 
 (setq transient-mark-mode t)
@@ -191,20 +144,115 @@
 (setq eshell-save-history-on-exit t) 
 
 
+
+(setq minibuffer-max-depth nil)
+(put `upcase-region `disabled nil)
+(require `setnu)
+
+(defun toggle-setnu-mode ()
+      (interactive)
+      (if setnu-mode
+        (setnu-mode -1)
+        (setnu-mode 1)))
+
+(set-face-attribute
+ `tabbar-default-face nil
+ :background "gray60")
+(set-face-attribute
+ `tabbar-unselected-face nil
+ :background "gray85"
+ :foreground "gray30"
+ :box nil)
+(set-face-attribute
+ `tabbar-selected-face nil
+ :background "#f2f2f6"
+ :foreground "black"
+ :box nil)
+(set-face-attribute
+ `tabbar-button-face nil
+ :box `(:line-width 1 :color "gray72" :style released-button))
+(set-face-attribute
+ `tabbar-separator-face nil
+ :height 0.7)
+
 (tabbar-mode 1)
 (define-key global-map [(meta {)] `tabbar-backward)
 (define-key global-map [(meta })] `tabbar-forward)
 
 
+(setq auto-mode-alist
+      (append auto-mode-alist
+              '(("\\.[hg]s$"  . haskell-mode)
+                ("\\.hic?$"     . haskell-mode)
+                ("\\.hsc$"     . haskell-mode)
+  ("\\.chs$"    . haskell-mode)
+                ("\\.l[hg]s$" . literate-haskell-mode))))
+(autoload 'haskell-mode "haskell-mode"
+   "Major mode for editing Haskell scripts." t)
+(autoload 'literate-haskell-mode "haskell-mode"
+   "Major mode for editing literate Haskell scripts." t)
+
+(setenv "PATH" (concat (getenv "PATH") ":/Users/swami/Workspace/local/bin"))
+
+(setenv "DYLD_LIBRARY_PATH" (concat (getenv "DYLD_LIBRARY_PATH") ":/Users/swami/Workspace/local/lib"))
+
+(setq exec-path (append exec-path  '("/usr/local/bin" "/Users/swami/Workspace/local/bin")))
+
+
 (copy-face `default  `minibuffer-prompt)
 (make-face-bold `minibuffer-prompt nil 1)
+(set-face-foreground `minibuffer-prompt "White")
 
 (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
 
 (add-to-list
       'default-frame-alist
-      '(font . "-*-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-*-*-*-*"))
+      '(font . "DejaVu Sans Mono-12"))
 
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(setq make-backup-files nil)
+(defun my-bell-function ()
+  (unless (memq this-command
+     '(isearch-abort abort-recursive-edit exit-minibuffer
+              keyboard-quit mwheel-scroll down up next-line previous-line
+              backward-char forward-char))
+    (ding)))
+
+(setq ring-bell-function 'my-bell-function)
+
+(defun fullscreen (&optional f)
+      (interactive)
+      (let ((current-value (frame-parameter nil 'fullscreen)))
+           (set-frame-parameter nil 'fullscreen
+                                (if (equal 'fullboth current-value)
+                                    (if (boundp 'old-fullscreen) old-fullscreen nil)
+                                    (progn (setq old-fullscreen current-value)
+                                           'fullboth)))))
+    ; Make new frames fullscreen by default. Note: this hook doesn't do
+    ; anything to the initial frame if it's in your .emacs, since that file is
+    ; read _after_ the initial frame is created.
+    ; (add-hook 'after-make-frame-functions 'toggle-fullscreen)
+
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
+(require 'auto-complete-clang-async)
+
+(defun ac-cc-mode-setup ()
+  (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (setq ac-sources '(ac-source-clang-async))
+  (ac-clang-launch-completion-process)
+)
+
+(defun my-ac-config ()
+  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  (global-auto-complete-mode t))
+
+(my-ac-config)
+
+
+(defun my-c++-mode-hook ()
+  (setq c-basic-offset 4)
+  (c-set-offset 'substatement-open 0))
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
