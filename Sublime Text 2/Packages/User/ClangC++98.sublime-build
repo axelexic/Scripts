@@ -1,0 +1,24 @@
+{
+	"cmd": ["clang++", 
+			"-Wall", 
+			"-Wextra", 
+			"-std=c++98", 
+			"-stdlib=libstdc++", 
+			"-I/Volumes/Apprentice/Workspace/macports/include", 
+			"-I/Volumes/CRI/local/include", 
+			"${file}",
+			"-o", 
+			"${file_path}/${file_base_name}"],
+
+	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	"working_dir": "${file_path}",
+	"selector": "source.c, source.c++",
+
+	"variants":
+	[
+		{
+			"name": "Run",
+			"cmd": ["bash", "-c", "clang++ -I/Volumes/Apprentice/Workspace/macports/include -I/Volumes/CRI/local/include -Wall -Wextra -std=c++98 -stdlib=libstdc++ '${file}' -o '${file_path}/${file_base_name}' && '${file_path}/${file_base_name}'"]
+		}
+	]
+}

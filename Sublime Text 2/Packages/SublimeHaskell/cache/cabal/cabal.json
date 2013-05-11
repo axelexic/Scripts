@@ -1,0 +1,507 @@
+{
+  "Data.Char": {
+    "exports": [], 
+    "cabal": "cabal", 
+    "name": "Data.Char", 
+    "imports": {}, 
+    "declarations": {
+      "isLetter": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isLetter", 
+        "location": null
+      }, 
+      "toTitle": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Char", 
+        "name": "toTitle", 
+        "location": null
+      }, 
+      "showLitChar": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> ShowS", 
+        "name": "showLitChar", 
+        "location": null
+      }, 
+      "Space": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "Space", 
+        "location": null
+      }, 
+      "isHexDigit": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isHexDigit", 
+        "location": null
+      }, 
+      "isAsciiUpper": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isAsciiUpper", 
+        "location": null
+      }, 
+      "isOctDigit": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isOctDigit", 
+        "location": null
+      }, 
+      "FinalQuote": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "FinalQuote", 
+        "location": null
+      }, 
+      "TitlecaseLetter": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "TitlecaseLetter", 
+        "location": null
+      }, 
+      "isAlpha": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isAlpha", 
+        "location": null
+      }, 
+      "LowercaseLetter": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "LowercaseLetter", 
+        "location": null
+      }, 
+      "MathSymbol": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "MathSymbol", 
+        "location": null
+      }, 
+      "OtherPunctuation": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "OtherPunctuation", 
+        "location": null
+      }, 
+      "DashPunctuation": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "DashPunctuation", 
+        "location": null
+      }, 
+      "isSpace": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isSpace", 
+        "location": null
+      }, 
+      "OtherNumber": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "OtherNumber", 
+        "location": null
+      }, 
+      "generalCategory": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> GeneralCategory", 
+        "name": "generalCategory", 
+        "location": null
+      }, 
+      "lexLitChar": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "ReadS String", 
+        "name": "lexLitChar", 
+        "location": null
+      }, 
+      "isUpper": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isUpper", 
+        "location": null
+      }, 
+      "digitToInt": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Int", 
+        "name": "digitToInt", 
+        "location": null
+      }, 
+      "Format": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "Format", 
+        "location": null
+      }, 
+      "NotAssigned": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "NotAssigned", 
+        "location": null
+      }, 
+      "isAsciiLower": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isAsciiLower", 
+        "location": null
+      }, 
+      "intToDigit": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Int -> Char", 
+        "name": "intToDigit", 
+        "location": null
+      }, 
+      "isSymbol": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isSymbol", 
+        "location": null
+      }, 
+      "OtherLetter": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "OtherLetter", 
+        "location": null
+      }, 
+      "chr": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Int -> Char", 
+        "name": "chr", 
+        "location": null
+      }, 
+      "isAscii": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isAscii", 
+        "location": null
+      }, 
+      "EnclosingMark": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "EnclosingMark", 
+        "location": null
+      }, 
+      "DecimalNumber": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "DecimalNumber", 
+        "location": null
+      }, 
+      "SpacingCombiningMark": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "SpacingCombiningMark", 
+        "location": null
+      }, 
+      "LineSeparator": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "LineSeparator", 
+        "location": null
+      }, 
+      "PrivateUse": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "PrivateUse", 
+        "location": null
+      }, 
+      "Surrogate": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "Surrogate", 
+        "location": null
+      }, 
+      "isAlphaNum": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isAlphaNum", 
+        "location": null
+      }, 
+      "isMark": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isMark", 
+        "location": null
+      }, 
+      "isControl": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isControl", 
+        "location": null
+      }, 
+      "LetterNumber": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "LetterNumber", 
+        "location": null
+      }, 
+      "isLower": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isLower", 
+        "location": null
+      }, 
+      "ord": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Int", 
+        "name": "ord", 
+        "location": null
+      }, 
+      "isNumber": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isNumber", 
+        "location": null
+      }, 
+      "ModifierLetter": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "ModifierLetter", 
+        "location": null
+      }, 
+      "UppercaseLetter": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "UppercaseLetter", 
+        "location": null
+      }, 
+      "Control": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "Control", 
+        "location": null
+      }, 
+      "readLitChar": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "ReadS Char", 
+        "name": "readLitChar", 
+        "location": null
+      }, 
+      "ConnectorPunctuation": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "ConnectorPunctuation", 
+        "location": null
+      }, 
+      "toLower": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Char", 
+        "name": "toLower", 
+        "location": null
+      }, 
+      "ClosePunctuation": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "ClosePunctuation", 
+        "location": null
+      }, 
+      "OpenPunctuation": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "OpenPunctuation", 
+        "location": null
+      }, 
+      "NonSpacingMark": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "NonSpacingMark", 
+        "location": null
+      }, 
+      "isSeparator": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isSeparator", 
+        "location": null
+      }, 
+      "Char": {
+        "docs": null, 
+        "what": "declaration", 
+        "__type__": "declaration", 
+        "name": "Char", 
+        "location": null
+      }, 
+      "ModifierSymbol": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "ModifierSymbol", 
+        "location": null
+      }, 
+      "isPrint": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isPrint", 
+        "location": null
+      }, 
+      "isLatin1": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isLatin1", 
+        "location": null
+      }, 
+      "isPunctuation": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isPunctuation", 
+        "location": null
+      }, 
+      "toUpper": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Char", 
+        "name": "toUpper", 
+        "location": null
+      }, 
+      "CurrencySymbol": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "CurrencySymbol", 
+        "location": null
+      }, 
+      "isDigit": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "Char -> Bool", 
+        "name": "isDigit", 
+        "location": null
+      }, 
+      "ParagraphSeparator": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "ParagraphSeparator", 
+        "location": null
+      }, 
+      "GeneralCategory": {
+        "definition": null, 
+        "name": "GeneralCategory", 
+        "docs": null, 
+        "args": [], 
+        "__type__": "data", 
+        "location": null, 
+        "context": null
+      }, 
+      "InitialQuote": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "InitialQuote", 
+        "location": null
+      }, 
+      "OtherSymbol": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "GeneralCategory", 
+        "name": "OtherSymbol", 
+        "location": null
+      }
+    }, 
+    "__type__": "module", 
+    "location": null
+  }, 
+  "System.Environment": {
+    "exports": [], 
+    "cabal": "cabal", 
+    "name": "System.Environment", 
+    "imports": {}, 
+    "declarations": {
+      "getEnvironment": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "IO [(String, String)]", 
+        "name": "getEnvironment", 
+        "location": null
+      }, 
+      "withProgName": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "String -> IO a -> IO a", 
+        "name": "withProgName", 
+        "location": null
+      }, 
+      "withArgs": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "[String] -> IO a -> IO a", 
+        "name": "withArgs", 
+        "location": null
+      }, 
+      "getProgName": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "IO String", 
+        "name": "getProgName", 
+        "location": null
+      }, 
+      "getEnv": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "String -> IO String", 
+        "name": "getEnv", 
+        "location": null
+      }, 
+      "getArgs": {
+        "docs": null, 
+        "__type__": "function", 
+        "type": "IO [String]", 
+        "name": "getArgs", 
+        "location": null
+      }
+    }, 
+    "__type__": "module", 
+    "location": null
+  }
+}
