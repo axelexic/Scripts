@@ -1,0 +1,17 @@
+SRC_FILES = $(wildcard *.hs)
+EXE_FILES = $(patsubst %.hs,%,$(SRC_FILES))
+HI_FILES  = $(patsubst %.hs,%.hi,$(SRC_FILES))
+
+GHC=ghc
+
+.PHONY: all clean
+
+all: $(EXE_FILES)
+
+%:%.hs
+	$(GHC) -Wall -O2 -dynamic --make $<
+	@rm $(patsubst %.hs,%.hi,$<)
+	@rm $(patsubst %.hs,%.o,$<)
+
+clean:
+	rm -rf *.o $(HI_FILES) $(EXE_FILES)
