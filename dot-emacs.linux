@@ -1,66 +1,44 @@
-;;
-;; Copyright (C) 2005 by Yogesh Prem Swami. All rights reserved.
-;; I am not responsible in any way for any damage that might
-;; occur beacuse of the use of this file. By using this file,
-;; you are agreeing to the above conditions.
-;;
+(package-initialize)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(before-save-hook (quote (delete-trailing-whitespace)))
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes (quote ("64581032564feda2b5f2cf389018b4b9906d98293d84d84142d90d7986032d33" default)))
+ '(global-hl-line-mode nil)
+ '(global-linum-mode t)
+ '(haskell-font-lock-symbols (quote unicode))
+ '(haskell-indent-spaces 4)
+ '(inhibit-startup-buffer-menu t)
+ '(inhibit-startup-screen t)
+ '(left-margin 0)
+ '(linum-format "%5d  ")
+ '(make-backup-files nil)
+ '(menu-bar-mode nil)
+ '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.org/packages/"))))
+ '(show-paren-mode t)
+ '(show-paren-style (quote mixed))
+ '(tabbar-background-color nil)
+ '(tabbar-mode t nil (tabbar))
+ '(tabbar-separator (quote (" | ")))
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "default" :family "dejavu sans mono"))))
+ '(tabbar-button ((t (:inherit tabbar-default))))
+ '(tabbar-default ((t (:inherit variable-pitch :foreground "grey75" :height 0.8))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "cyan" :box (:line-width 1 :color "white" :style released-button)))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "SpringGreen1" :underline "brightred" :slant italic :weight semi-bold))))
+ '(tabbar-separator ((t (:inherit tabbar-default))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
-
-;; First add my own load path to allow xemacs and stuff like that
-(add-to-list 'load-path "~/.emacs.d/lib/ecb")
-(setq load-path (cons "~/.emacs.d/lib" load-path))
-(load "~/.emacs.d/lib/haskell/haskell-site-file")
-(load-library "clang-completion-mode")
-(require 'xcscope)
-(require 'tabbar)
-(require 'gas-mode)
-(add-to-list 'auto-mode-alist '("\\.S\\'" . gas-mode))
-(add-to-list 'auto-mode-alist '("\\.s\\'" . gas-mode))
-(add-to-list 'auto-mode-alist '("\\.asm\\'" . gas-mode))
-(setq mac-command-key-is-meta 1)
-
-;; (add-to-list 'load-path "~/.emacs.d/lib")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/lib/ac-dict")
-(ac-config-default)
-
-(setq default-frame-alist '(
-			    (tool-bar-lines         . 0)
-			    (menu-bar-lines         . 0)
-			    (border-color           . "White")
-			    (cursor-color           . "Yellow")
-			    (mouse-color            . "SpringGreen2")
-			    (foreground-color       . "White")
-			    (background-color       . "Black")
-			    (internal-border-width  . 0)
-			    (default-fringes-outside-margins . 0)
-			    (default-left-fringe-width . 0)
-			    (default-left-margin-width . 0)
-			    ))
-
-
-;(split-window-horizontally)
-
-;; First things first.
-
-
-
-(setq inhibit-startup-message t)
-(setq mac-emulate-three-button-mouse t)
-(setq make-backup-files nil)
-(setq vc-make-backup-files nil)
-(setq scroll-step 0)
-(setq scroll-preserve-screen-position t)
-(setq scroll-conservatively 5)
-(setq next-screen-context-lines 1)
-(display-time)
-(show-paren-mode 1)
-
-(setq line-number-mode 1)
-(setq column-number-mode 1)
-(setq fill-column 80)
-
-(setq mac-option-modifier 'hyper)
+;; Keyboard customization:
 
 (global-set-key [(hyper right)] `next-multiframe-window)
 (global-set-key [(hyper left)]  `previous-multiframe-window)
@@ -69,7 +47,6 @@
 (global-set-key "\C-b" `copy-region-as-kill)
 (global-set-key "\M-g" `goto-line)
 (global-set-key "\C-j" `fill-region)
-;; (global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
 
 (define-key global-map [\C-kp-end]    `end-of-line)
 (define-key global-map [\C-kp-right]  `mark-sexp)
@@ -83,176 +60,31 @@
 (define-key global-map  [f6]  `cscope-find-global-definition-no-prompting)
 (define-key global-map  [f7]  `cscope-find-global-definition)
 
-
-(define-key global-map [(meta ,)]  `cscope-pop-mark)		  
-
-(define-key global-map [(meta +)]  `point-to-register)
-(define-key global-map [(meta -)]  `jump-to-register)		  
-
-(define-key global-map "\C-c\C-b"  `cscope-display-buffer)
-(define-key global-map "\C-c\C-t" `cscope-display-buffer-toggle)
 (define-key global-map [(meta z)] `undo)
 (define-key global-map [(meta v)]  `clipboard-yank)
 (define-key global-map [(meta c)]  `copy-region-as-kill)
-(define-key global-map [(meta up)] `beginning-of-buffer)
-(define-key global-map [(meta down)]  `end-of-buffer)
-
-;; HATE spaces like hell.
-(setq show-trailing-whitespace t)
-
-(cond ((fboundp `global-font-lock-mode)
-       (setq font-lock-face-attributes
- 	     `((font-lock-comment-face       "Orchid") ;MediumOrchid
- 	       (font-lock-string-face        "Red1") ;  MediumPurple1, IndianRed
- 	       (font-lock-constant-face      "Goldenrod")
- 	       (font-lock-keyword-face       "DeepSkyBlue1");Magenta, MediumBlue
- 	       (font-lock-variable-name-face "yellow")     ;OrangeRed
- 	       (font-lock-type-face          "Green1")
-	       ;; (font-lock-reference-face     "greenyellow")    ;LimeGreen
-	       ;; (font-lock-doc-string-face    "light slate blue")
-	       (font-lock-function-name-face "deep pink")
- 	       ))
-       
-       ;; Load the font-lock package.
-       (require `font-lock)
-       ;; Maximum colors
-       (setq font-lock-maximum-decoration t)
-       ;;(set-face-background `font-lock-function-name-face "white")
-       (set-face-background `show-paren-match-face "pale green")
-       (set-face-foreground `show-paren-match-face "black")
-       (make-face-bold `show-paren-match-face)
-       (set-face-background `show-paren-mismatch-face "red")
-       (set-face-foreground `show-paren-mismatch-face "snow")
-       (make-face-bold `show-paren-mismatch-face)
-       (make-face-bold `font-lock-function-name-face )
-       (make-face-italic `font-lock-keyword-face)
-       ;; Turn on font-lock in all modes that support it
-       (global-font-lock-mode t)))
-
-(defun goto-matching-paren-or-insert (arg)
-(interactive "p")
-(cond ((looking-at "[([{]") (forward-sexp 1) (backward-char))
-      ((looking-at "[])}]") (forward-char) (backward-sexp 1))
-       (t (self-insert-command (or arg 1)))))
-(global-set-key "%" `goto-matching-paren-or-insert)
-
-
-(setq transient-mark-mode t)
-(set-face-background `region "grey40")
-
-(make-face-bold `font-lock-function-name-face)
-(setq eshell-save-history-on-exit t) 
-
-
-
-(setq minibuffer-max-depth nil)
-(put `upcase-region `disabled nil)
-(require `setnu)
-
-(defun toggle-setnu-mode ()
-      (interactive)
-      (if setnu-mode
-        (setnu-mode -1)
-        (setnu-mode 1)))
-
-(set-face-attribute
- `tabbar-default-face nil
- :background "gray60")
-(set-face-attribute
- `tabbar-unselected-face nil
- :background "gray85"
- :foreground "gray30"
- :box nil)
-(set-face-attribute
- `tabbar-selected-face nil
- :background "#f2f2f6"
- :foreground "black"
- :box nil)
-(set-face-attribute
- `tabbar-button-face nil
- :box `(:line-width 1 :color "gray72" :style released-button))
-(set-face-attribute
- `tabbar-separator-face nil
- :height 0.7)
-
-(tabbar-mode 1)
+(define-key global-map [(meta up)] `backward-paragraph)
+(define-key global-map [(meta down)]  `forward-paragraph)
 (define-key global-map [(meta {)] `tabbar-backward)
 (define-key global-map [(meta })] `tabbar-forward)
 
+;; Custom behavior
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(setq auto-mode-alist
-      (append auto-mode-alist
-              '(("\\.[hg]s$"  . haskell-mode)
-                ("\\.hic?$"     . haskell-mode)
-                ("\\.hsc$"     . haskell-mode)
-  ("\\.chs$"    . haskell-mode)
-                ("\\.l[hg]s$" . literate-haskell-mode))))
-(autoload 'haskell-mode "haskell-mode"
-   "Major mode for editing Haskell scripts." t)
-(autoload 'literate-haskell-mode "haskell-mode"
-   "Major mode for editing literate Haskell scripts." t)
+;; Irony mode behavior
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
-(setenv "PATH" (concat (getenv "PATH") ":/Users/swami/Workspace/local/bin"))
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's asynchronous function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+	'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+	'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
 
-(setenv "DYLD_LIBRARY_PATH" (concat (getenv "DYLD_LIBRARY_PATH") ":/Users/swami/Workspace/local/lib"))
-
-(setq exec-path (append exec-path  '("/usr/local/bin" "/Users/swami/Workspace/local/bin")))
-
-
-(copy-face `default  `minibuffer-prompt)
-(make-face-bold `minibuffer-prompt nil 1)
-(set-face-foreground `minibuffer-prompt "White")
-
-(add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
-
-(add-to-list
-      'default-frame-alist
-      '(font . "DejaVu Sans Mono-12"))
-
-(defun my-bell-function ()
-  (unless (memq this-command
-     '(isearch-abort abort-recursive-edit exit-minibuffer
-              keyboard-quit mwheel-scroll down up next-line previous-line
-              backward-char forward-char))
-    (ding)))
-
-(setq ring-bell-function 'my-bell-function)
-
-(defun fullscreen (&optional f)
-      (interactive)
-      (let ((current-value (frame-parameter nil 'fullscreen)))
-           (set-frame-parameter nil 'fullscreen
-                                (if (equal 'fullboth current-value)
-                                    (if (boundp 'old-fullscreen) old-fullscreen nil)
-                                    (progn (setq old-fullscreen current-value)
-                                           'fullboth)))))
-    ; Make new frames fullscreen by default. Note: this hook doesn't do
-    ; anything to the initial frame if it's in your .emacs, since that file is
-    ; read _after_ the initial frame is created.
-    ; (add-hook 'after-make-frame-functions 'toggle-fullscreen)
-
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
-
-(require 'auto-complete-clang-async)
-
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
-)
-
-(defun my-ac-config ()
-  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-  (global-auto-complete-mode t))
-
-(my-ac-config)
-
-
-(defun my-c++-mode-hook ()
-  (setq c-basic-offset 4)
-  (c-set-offset 'substatement-open 0))
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+;; Only needed on Windows
+(when (eq system-type 'windows-nt)
+  (setq w32-pipe-read-delay 0))

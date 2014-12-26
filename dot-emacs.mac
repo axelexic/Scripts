@@ -1,68 +1,134 @@
-;;
-;; Copyright (C) 2005 by Yogesh Prem Swami. All rights reserved.
-;; I am not responsible in any way for any damage that might
-;; occur beacuse of the use of this file. By using this file,
-;; you are agreeing to the above conditions.
-;;
+(package-initialize)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#504545" "#ad8572" "#a9df90" "#aaca86" "#91a0b3" "#ab85a3" "#ddbc91" "#bdbdb3"])
+ '(c-default-style
+   (quote
+	((c-mode . "")
+	 (c++-mode . "")
+	 (objc-mode . "")
+	 (awk-mode . "awk")
+	 (other . "gnu"))))
+ '(c-report-syntactic-errors t)
+ '(column-number-mode t)
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes
+   (quote
+	("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8d6fb24169d94df45422617a1dfabf15ca42a97d594d28b3584dc6db711e0e0b" "08efabe5a8f3827508634a3ceed33fa06b9daeef9c70a24218b70494acdf7855" "758da0cfc4ecb8447acb866fb3988f4a41cf2b8f9ca28de9b21d9a68ae61b181" "789844278c5a75283b5015c1fc7bebe7e4cf97843b8f8cffe21fafa05e81e90a" "f0ea6118d1414b24c2e4babdc8e252707727e7b4ff2e791129f240a2b3093e32" "49eea2857afb24808915643b1b5bd093eefb35424c758f502e98a03d0d3df4b1" "64581032564feda2b5f2cf389018b4b9906d98293d84d84142d90d7986032d33" "436ae3105bb26b7e3edbd624612ee3ba929fd568d3b3bd1f72e6aa2b0cab1bb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(display-time-day-and-date t)
+ '(display-time-format "%D (%A) | %R ")
+ '(display-time-mode t)
+ '(fci-rule-color "#49483E")
+ '(font-lock-maximum-decoration t)
+ '(global-hl-line-mode t)
+ '(global-linum-mode t)
+ '(haskell-font-lock-symbols (quote unicode))
+ '(haskell-indent-spaces 4)
+ '(haskell-mode-hook (quote (turn-on-haskell-doc turn-on-haskell-indentation)))
+ '(haskell-stylish-on-save nil)
+ '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
+ '(highlight-symbol-colors
+   (--map
+	(solarized-color-blend it "#fdf6e3" 0.25)
+	(quote
+	 ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (("#49483E" . 0)
+	("#67930F" . 20)
+	("#349B8D" . 30)
+	("#21889B" . 50)
+	("#968B26" . 60)
+	("#A45E0A" . 70)
+	("#A41F99" . 85)
+	("#49483E" . 100)))
+ '(hl-bg-colors
+   (quote
+	("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+	("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
+ '(linum-format "%5d ")
+ '(magit-diff-use-overlays nil)
+ '(magit-use-overlays nil)
+ '(make-backup-files nil)
+ '(menu-bar-mode nil)
+ '(package-archives
+   (quote
+	(("gnu" . "http://elpa.gnu.org/packages/")
+	 ("melpa" . "http://melpa.org/packages/"))))
+ '(show-paren-delay 0.125)
+ '(show-paren-mode t)
+ '(show-paren-style (quote mixed))
+ '(size-indication-mode t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(tab-width 4)
+ '(tabbar-background-color nil)
+ '(tabbar-mode t nil (tabbar))
+ '(tabbar-separator (quote (" | ")))
+ '(tabbar-use-images nil)
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+	((20 . "#F92672")
+	 (40 . "#CF4F1F")
+	 (60 . "#C26C0F")
+	 (80 . "#E6DB74")
+	 (100 . "#AB8C00")
+	 (120 . "#A18F00")
+	 (140 . "#989200")
+	 (160 . "#8E9500")
+	 (180 . "#A6E22E")
+	 (200 . "#729A1E")
+	 (220 . "#609C3C")
+	 (240 . "#4E9D5B")
+	 (260 . "#3C9F79")
+	 (280 . "#A1EFE4")
+	 (300 . "#299BA6")
+	 (320 . "#2896B5")
+	 (340 . "#2790C3")
+	 (360 . "#66D9EF"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   (unspecified "#272822" "#49483E" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Monaco"))))
+ '(error ((t (:foreground "firebrick1"))))
+ '(fixed-pitch ((t (:family "Monaco"))))
+ '(hl-line ((t (:inherit t :background "#262626"))))
+ '(linum ((t (:background "#8a8a8a" :foreground "#262626" :inverse-video t :weight ultra-light :family "menlo"))))
+ '(region ((t (:inherit t :background "blue"))))
+ '(show-paren-match ((t (:inverse-video t :weight normal))))
+ '(show-paren-mismatch ((t (:foreground "brightred" :inverse-video t :weight normal))))
+ '(tabbar-button ((t (:inherit tabbar-default))))
+ '(tabbar-default ((t (:inherit variable-pitch :foreground "grey75" :height 0.8))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "cyan" :box (:line-width 1 :color "white" :style released-button)))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "SpringGreen1" :underline "brightred" :slant oblique :weight semi-bold))))
+ '(tabbar-separator ((t (:inherit tabbar-default))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
-
-;; First add my own load path to allow xemacs and stuff like that
-(add-to-list 'load-path "~/.emacs.d/lib/ecb")
-(setq load-path (cons "~/.emacs.d/lib" load-path))
-(load "~/.emacs.d/lib/haskell/haskell-site-file")
-(require 'xcscope)
-(require 'tabbar)
-(require 'gas-mode)
-(add-to-list 'auto-mode-alist '("\\.S\\'" . gas-mode))
-(add-to-list 'auto-mode-alist '("\\.s\\'" . gas-mode))
-(add-to-list 'auto-mode-alist '("\\.asm\\'" . gas-mode))
-(setq mac-command-key-is-meta 1)
-
-;; (require 'ecb)
-;; (require 'ecb-autoloads)
-
-
-(setq default-frame-alist '(
-			    (tool-bar-lines         . 0)
-			    (menu-bar-lines         . 0)
-			    (border-color           . "White")
-			    (cursor-color           . "Yellow")
-			    (mouse-color            . "SpringGreen2")
-			    (foreground-color       . "White")
-			    (background-color       . "Black")
-			    (internal-border-width  . 0)
-			    (default-fringes-outside-margins . 0)
-			    (default-left-fringe-width . 0)
-			    (default-left-margin-width . 0)
-			    (width  . 220)
-			    (height . 52)
-			    (top . 0)
-			    (left . 100)
-			    ))
-
-
-;(split-window-horizontally)
-
-;; First things first.
-
-
-
-(setq inhibit-startup-message t)
-(setq mac-emulate-three-button-mouse t)
-(setq make-backup-files nil)
-(setq vc-make-backup-files nil)
-(setq scroll-step 0)
-(setq scroll-preserve-screen-position t)
-(setq scroll-conservatively 5)
-(setq next-screen-context-lines 1)
-(display-time)
-(show-paren-mode 1)
-
-(setq line-number-mode 1)
-(setq column-number-mode 1)
-(setq fill-column 80)
-
-(setq mac-option-modifier 'hyper)
+;; Keyboard customization:
 
 (global-set-key [(hyper right)] `next-multiframe-window)
 (global-set-key [(hyper left)]  `previous-multiframe-window)
@@ -71,333 +137,52 @@
 (global-set-key "\C-b" `copy-region-as-kill)
 (global-set-key "\M-g" `goto-line)
 (global-set-key "\C-j" `fill-region)
-(global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
 
-;(define-key global-map [f2]           `find-file)
-;(define-key global-map [f3]           `copy-region-as-kill)
-
-(define-key global-map [f8]           `goto-line)
-(define-key global-map [\C-f8]        `what-line)
-(define-key global-map [f9]          `kill-ring-save)
 (define-key global-map [\C-kp-end]    `end-of-line)
 (define-key global-map [\C-kp-right]  `mark-sexp)
 (define-key global-map  "\C-c\C-i"  `cscope-set-initial-directory)
 (define-key global-map  "\C-c\C-r"  `cscope-unset-initial-directory)
+(define-key global-map  [f1] `cscope-pop-mark)
+(define-key global-map  [f2] `cscope-find-this-text-string)
+(define-key global-map  [f3] `cscope-find-functions-calling-this-function)
 (define-key global-map  [f4]  `cscope-find-this-symbol)
-(define-key global-map  [f7]  `cscope-find-global-definition)
+(define-key global-map  [f5]  `cscope-find-this-file)
 (define-key global-map  [f6]  `cscope-find-global-definition-no-prompting)
-(define-key global-map  [f5]  `cscope-pop-mark)
-; (define-key global-map [(meta .)]  `point-to-register)
-(define-key global-map [(meta ,)]  `cscope-pop-mark)		  
+(define-key global-map  [f7]  `cscope-find-global-definition)
 
-(define-key global-map [(meta +)]  `point-to-register)
-(define-key global-map [(meta -)]  `jump-to-register)		  
-
-(define-key global-map "\C-c\C-b"  `cscope-display-buffer)
-(define-key global-map "\C-c\C-t" `cscope-display-buffer-toggle)
 (define-key global-map [(meta z)] `undo)
 (define-key global-map [(meta v)]  `clipboard-yank)
 (define-key global-map [(meta c)]  `copy-region-as-kill)
 (define-key global-map [(meta up)] `beginning-of-buffer)
 (define-key global-map [(meta down)]  `end-of-buffer)
-(global-set-key  [(f1)]  (lambda () (interactive) (manual-entry (current-word))))
 
-
-(require `cc-mode)
-(setq indent-tabs-mode nil)
-(setq c-default-style "linux")
-
-;; No tabs; only spaces. 
-(add-hook `c++-mode-hook `(lambda ()
-			    (setq indent-tabs-mode nil)))
-(add-hook `c-mode-hook `(lambda ()
-			  (setq indent-tabs-mode nil)))
-
-;; Let emacs do all the work. Why can't it not even write the code for us :-)
-(setq c-auto-newline 1)
-
-;; HATE spaces like hell.
-(setq show-trailing-whitespace t)
-
-
-(global-set-key "\C-m" `newline-and-indent)
-(add-hook `c++-mode-hook `turn-on-auto-fill)
-(add-hook `c-mode-hook `turn-on-auto-fill)
-(c-toggle-hungry-state 1)
-
-(defun run-save-and-compile ()
-  (interactive "")
-  (save-buffer 0)
-  (compile "make"))
-
-(define-key c-mode-map "\C-c\C-c" `run-save-and-compile)
-
-(add-hook `html-mode-hook `turn-on-auto-fill)
-(add-hook `sgml-mode-hook `turn-on-auto-fill)
-
-;; Latex mode.
-;; (add-hook `text-mode-hook (lambda () (flyspell-mode 1)))
-;;flyspell hooking (for error coloring and 3 mouse button menu)
-;; (define-key global-map [(control tab)] `flyspell-auto-correct-word)
-
-;; (add-hook `text-mode-hook (lambda () (abbrev-mode 1)))
-;; (quietly-read-abbrev-file "~/.emacs.d/abbrev_defs.el")
-
-(add-hook `text-mode-hook `turn-on-auto-fill)
-(setq tex-default-mode `latex-mode)
-(add-hook `latex-mode-hook `turn-on-auto-fill)
-(add-hook `latex-mode-hook (function (lambda() (local-set-key [\C-return] `tex-file))))
-
-
-(add-hook `c++-mode-hook `(lambda ()
-			    (setq fill-column 80)))
-(add-hook `c-mode-hook `(lambda ()
-			  (setq fill-column 80)))
-
-(add-hook `html-mode-hook `(lambda ()
-			    (setq fill-column 80)))
-
-(add-hook `latex-mode-hook `(lambda ()
-			    (setq fill-column 80)))
-
-
-(add-hook `c++-mode-hook `(lambda ()
-			    (setq comment-column 50)))
-(add-hook `c-mode-hook `(lambda ()
-			  (setq comment-column 50)))
-
-
- (cond ((fboundp `global-font-lock-mode)
-       (setq font-lock-face-attributes
- 	     `((font-lock-comment-face       "Orchid") ;MediumOrchid
- 	       (font-lock-string-face        "Red1") ;  MediumPurple1, IndianRed
- 	       (font-lock-constant-face      "Goldenrod")
- 	       (font-lock-keyword-face       "DeepSkyBlue1");Magenta, MediumBlue
- 	       (font-lock-variable-name-face "yellow")     ;OrangeRed
- 	       (font-lock-type-face          "Green1")
- 	      ;; (font-lock-reference-face     "greenyellow")    ;LimeGreen
- 	      ;; (font-lock-doc-string-face    "light slate blue")
- 	      (font-lock-function-name-face "deep pink")
- 	       ))
- 
-        ;; Load the font-lock package.
-        (require `font-lock)
-        ;; Maximum colors
-        (setq font-lock-maximum-decoration t)
-        ;;(set-face-background `font-lock-function-name-face "white")
-        (set-face-background `show-paren-match-face "pale green")
-        (set-face-foreground `show-paren-match-face "black")
-        (make-face-bold `show-paren-match-face)
-        (set-face-background `show-paren-mismatch-face "red")
-        (set-face-foreground `show-paren-mismatch-face "snow")
-        (make-face-bold `show-paren-mismatch-face)
-	(make-face-bold `font-lock-function-name-face )
-	(make-face-italic `font-lock-keyword-face)
-        ;; Turn on font-lock in all modes that support it
-       (global-font-lock-mode t)))
-
-(defun goto-matching-paren-or-insert (arg)
-(interactive "p")
-(cond ((looking-at "[([{]") (forward-sexp 1) (backward-char))
-      ((looking-at "[])}]") (forward-char) (backward-sexp 1))
-       (t (self-insert-command (or arg 1)))))
-(global-set-key "%" `goto-matching-paren-or-insert)
-
-
-(setq transient-mark-mode t)
-(set-face-background `region "grey40")
-
-(make-face-bold `font-lock-function-name-face)
-(setq eshell-save-history-on-exit t) 
-
-
-
-(setq minibuffer-max-depth nil)
-(put `upcase-region `disabled nil)
-(require `setnu)
-
-(defun toggle-setnu-mode ()
-      (interactive)
-      (if setnu-mode
-        (setnu-mode -1)
-        (setnu-mode 1)))
-
-(set-face-attribute
- `tabbar-default-face nil
- :background "gray60")
-(set-face-attribute
- `tabbar-unselected-face nil
- :background "gray85"
- :foreground "gray30"
- :box nil)
-(set-face-attribute
- `tabbar-selected-face nil
- :background "#f2f2f6"
- :foreground "black"
- :box nil)
-(set-face-attribute
- `tabbar-button-face nil
- :box `(:line-width 1 :color "gray72" :style released-button))
-(set-face-attribute
- `tabbar-separator-face nil
- :height 0.7)
-
-(tabbar-mode 1)
 (define-key global-map [(meta {)] `tabbar-backward)
 (define-key global-map [(meta })] `tabbar-forward)
 
+(define-key input-decode-map "\e\eOA" [(meta up)])
+(define-key input-decode-map "\e\eOB" [(meta down)])
+(global-set-key [(meta up)] 'backward-paragraph )
+(global-set-key [(meta down)] 'forward-paragraph )
+;; Custom behavior
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(setq auto-mode-alist
-      (append auto-mode-alist
-              '(("\\.[hg]s$"  . haskell-mode)
-                ("\\.hic?$"     . haskell-mode)
-                ("\\.hsc$"     . haskell-mode)
-  ("\\.chs$"    . haskell-mode)
-                ("\\.l[hg]s$" . literate-haskell-mode))))
-(autoload 'haskell-mode "haskell-mode"
-   "Major mode for editing Haskell scripts." t)
-(autoload 'literate-haskell-mode "haskell-mode"
-   "Major mode for editing literate Haskell scripts." t)
+;; Irony mode behavior
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
-;adding the following lines according to which modules you want to use:
-; (require 'inf-haskell)
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's asynchronous function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+	'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+	'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
 
-; (add-hook 'haskell-mode-hook 'turn-on-font-lock)
-; (add-hook 'haskell-mode-hook 'turn-off-haskell-decl-scan)
-; (add-hook 'haskell-mode-hook 'turn-off-haskell-doc-mode)
-; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-hugs)
-; (add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
-; (add-hook 'haskell-mode-hook 
-;   (function
-;    (lambda ()
-;      (setq haskell-program-name "ghci")
-;      (setq haskell-ghci-program-name "ghci6"))))
+;; Only needed on Windows
+(when (eq system-type 'windows-nt)
+  (setq w32-pipe-read-delay 0))
 
-
-(defun unicode-symbol (name)
-   "Translate a symbolic name for a Unicode character -- e.g., LEFT-ARROW                                      
- or GREATER-THAN into an actual Unicode character code. "
-   (decode-char 'ucs (case name                                             
-			('left-arrow 8592)
-                       ('up-arrow 8593)
-                       ('right-arrow 8594)
-                       ('down-arrow 8595)                                                
-			('double-vertical-bar #X2551)                  
-                       ('equal #X003d)
-                       ('not-equal #X2260)
-                       ('identical #X2261)
-                       ('not-identical #X2262)
-                       ('less-than #X003c)
-                       ('greater-than #X003e)
-   		        ('less-than-or-equal-to #X2264)
-            		('greater-than-or-equal-to #X2265)                        
-                       ('logical-and #X2227)
-                       ('logical-or #X2228)
-                       ('logical-neg #X00AC)                                                  
-                       ('nil #X2205)
-                       ('horizontal-ellipsis #X2026)
-                       ('double-exclamation #X203C)
-                       ('prime #X2032)
-                       ('double-prime #X2033)
-                       ('for-all #X2200)
-                       ('there-exists #X2203)
-                       ('element-of #X2208)              
-                       ('square-root #X221A)
-                       ('squared #X00B2)
-                       ('cubed #X00B3)                                            
-                       ('lambda #X03BB)
-                       ('alpha #X03B1)
-                       ('beta #X03B2)
-                       ('gamma #X03B3)
-                       ('delta #X03B4))))
-(defun substitute-pattern-with-unicode (pattern symbol)
-    "Add a font lock hook to replace the matched part of PATTERN with the                                       
-     Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
-    (interactive)
-    (font-lock-add-keywords
-    nil `((,pattern 
-           (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                     ,(unicode-symbol symbol)
-                                     'decompose-region)
-                             nil))))))
-
-(defun substitute-patterns-with-unicode (patterns)
-   "Call SUBSTITUTE-PATTERN-WITH-UNICODE repeatedly."
-   (mapcar #'(lambda (x)
-               (substitute-pattern-with-unicode (car x)
-                                                (cdr x)))
-           patterns))
-
-(defun haskell-unicode ()
- (interactive)
- (substitute-patterns-with-unicode
-  (list (cons "\\(<-\\)" 'left-arrow)
-        (cons "\\(->\\)" 'right-arrow)
-        (cons "\\(==\\)" 'identical)
-        (cons "\\(/=\\)" 'not-identical)
-        (cons "\\(()\\)" 'nil)
-        (cons "\\<\\(sqrt\\)\\>" 'square-root)
-        (cons "\\(&&\\)" 'logical-and)
-        (cons "\\(||\\)" 'logical-or)
-        (cons "\\<\\(not\\)\\>" 'logical-neg)
-        (cons "\\(>\\)\\[^=\\]" 'greater-than)
-        (cons "\\(<\\)\\[^=\\]" 'less-than)
-        (cons "\\(>=\\)" 'greater-than-or-equal-to)
-        (cons "\\(<=\\)" 'less-than-or-equal-to)
-        (cons "\\<\\(alpha\\)\\>" 'alpha)
-        (cons "\\<\\(beta\\)\\>" 'beta)
-        (cons "\\<\\(gamma\\)\\>" 'gamma)
-        (cons "\\<\\(delta\\)\\>" 'delta)
-        (cons "\\(''\\)" 'double-prime)
-        (cons "\\('\\)" 'prime)
-        (cons "\\(!!\\)" 'double-exclamation)
-        (cons "\\(\\.\\.\\)" 'horizontal-ellipsis))))
-
-;; (add-hook 'haskell-mode-hook 'haskell-unicode)
-
-
-(setenv "PATH" (concat (getenv "PATH") ":/Users/swami/Workspace/local/bin"))
-
-(setenv "DYLD_LIBRARY_PATH" (concat (getenv "DYLD_LIBRARY_PATH") ":/Users/swami/Workspace/local/lib"))
-
-(setq exec-path (append exec-path  '("/usr/local/bin" "/Users/swami/Workspace/local/bin")))
-
-
-(copy-face `default  `minibuffer-prompt)
-(make-face-bold `minibuffer-prompt nil 1)
-(set-face-foreground `minibuffer-prompt "White")
-
-(add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
-
-(add-to-list
-      'default-frame-alist
-      '(font . "-apple-monaco-medium-r-normal--14-*-*-*-*-*-*-*"))
-
-(defun my-bell-function ()
-  (unless (memq this-command
-     '(isearch-abort abort-recursive-edit exit-minibuffer
-              keyboard-quit mwheel-scroll down up next-line previous-line
-              backward-char forward-char))
-    (ding)))
-
-(setq ring-bell-function 'my-bell-function)
-
-(defun fullscreen (&optional f)
-      (interactive)
-      (let ((current-value (frame-parameter nil 'fullscreen)))
-           (set-frame-parameter nil 'fullscreen
-                                (if (equal 'fullboth current-value)
-                                    (if (boundp 'old-fullscreen) old-fullscreen nil)
-                                    (progn (setq old-fullscreen current-value)
-                                           'fullboth)))))
-    ; Make new frames fullscreen by default. Note: this hook doesn't do
-    ; anything to the initial frame if it's in your .emacs, since that file is
-    ; read _after_ the initial frame is created.
-    ; (add-hook 'after-make-frame-functions 'toggle-fullscreen)
-
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+(eval-after-load 'flycheck
+    '(add-to-list 'flycheck-checkers 'irony))
