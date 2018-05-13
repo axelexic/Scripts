@@ -1,0 +1,12 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  {
+    "key": "ctrl+v",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+x o",
+    "command": "workbench.action.nextEditorInGroup"
+  }
+]
