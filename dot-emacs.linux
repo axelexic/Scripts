@@ -1,40 +1,164 @@
 (package-initialize)
+;; (require 'xcscope)
+;; (require 'ac-haskell-process)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(before-save-hook (quote (delete-trailing-whitespace)))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#504545" "#ad8572" "#a9df90" "#aaca86" "#91a0b3" "#ab85a3" "#ddbc91" "#bdbdb3"])
+ '(c-basic-offset 2)
+ '(c-default-style
+   (quote
+    ((c-mode . "")
+     (c++-mode . "")
+     (objc-mode . "")
+     (awk-mode . "awk")
+     (other . "gnu"))))
+ '(c-offsets-alist (quote ((label . 0) (inextern-lang . 0) (innamespace . 0))))
+ '(c-report-syntactic-errors t)
+ '(change-major-mode-with-file-name t)
+ '(column-number-mode t)
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
  '(custom-enabled-themes (quote (monokai)))
- '(custom-safe-themes (quote ("64581032564feda2b5f2cf389018b4b9906d98293d84d84142d90d7986032d33" default)))
- '(global-hl-line-mode nil)
+ '(custom-safe-themes
+   (quote
+    ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" default)))
+ '(display-time-day-and-date t)
+ '(display-time-format "%D (%A) | %R ")
+ '(display-time-mode t)
+ '(fci-rule-color "#49483E")
+ '(fill-column 60)
+ '(font-lock-maximum-decoration t)
+ '(global-auto-complete-mode t)
+ '(global-flycheck-mode t)
+ '(global-hl-line-mode t)
  '(global-linum-mode t)
- '(haskell-font-lock-symbols (quote unicode))
+ '(haskell-doc-prettify-types nil)
+ '(haskell-font-lock-symbols nil)
+ '(haskell-hoogle-command "/home/swami/.cabal/bin/hoogle")
  '(haskell-indent-spaces 4)
- '(inhibit-startup-buffer-menu t)
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-haskell-doc)))
+ '(haskell-process-path-cabal "/Users/swami/.cabal/bin/cabal")
+ '(haskell-process-path-cabal-ghci "cabal repl")
+ '(haskell-process-path-ghci "/usr/local/bin/ghci")
+ '(haskell-process-prompt-restart-on-cabal-change nil)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote ghci))
+ '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (("#49483E" . 0)
+    ("#67930F" . 20)
+    ("#349B8D" . 30)
+    ("#21889B" . 50)
+    ("#968B26" . 60)
+    ("#A45E0A" . 70)
+    ("#A41F99" . 85)
+    ("#49483E" . 100)))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(left-margin 0)
- '(linum-format "%5d  ")
+ '(initial-scratch-message nil)
+ '(irony-server-install-prefix "/home/swami/.emacs.d/irony/bin")
+ '(linum-format "%5d ")
+ '(magit-diff-use-overlays nil)
+ '(magit-use-overlays nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.org/packages/"))))
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/"))))
+ '(package-selected-packages
+   (quote
+    (xcscope utop tuareg tabbar pbcopy monokai-theme llvm-mode irony-eldoc idris-mode flycheck-irony company-irony-c-headers company-irony column-marker cmake-mode clang-format ac-haskell-process)))
+ '(pdf-view-midnight-colors (quote ("#969896" . "#f8eec7")))
+ '(pos-tip-background-color "#eee8d5")
+ '(pos-tip-foreground-color "#586e75")
+ '(show-paren-delay 0.125)
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
+ '(size-indication-mode t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(tab-width 2)
  '(tabbar-background-color nil)
  '(tabbar-mode t nil (tabbar))
+ '(tabbar-mwheel-mode t nil (tabbar))
  '(tabbar-separator (quote (" | ")))
- '(tool-bar-mode nil))
+ '(tabbar-use-images nil)
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#F92672")
+     (40 . "#CF4F1F")
+     (60 . "#C26C0F")
+     (80 . "#E6DB74")
+     (100 . "#AB8C00")
+     (120 . "#A18F00")
+     (140 . "#989200")
+     (160 . "#8E9500")
+     (180 . "#A6E22E")
+     (200 . "#729A1E")
+     (220 . "#609C3C")
+     (240 . "#4E9D5B")
+     (260 . "#3C9F79")
+     (280 . "#A1EFE4")
+     (300 . "#299BA6")
+     (320 . "#2896B5")
+     (340 . "#2790C3")
+     (360 . "#66D9EF"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   (unspecified "#272822" "#49483E" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "default" :family "dejavu sans mono"))))
+ '(default ((t (:inherit nil :stipple nil :background nil :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 162 :width normal :family "Inconsolata"))))
+ '(error ((t (:foreground "firebrick1"))))
+ '(fixed-pitch ((t (:family "Inconsolata"))))
+ '(hl-line ((t (:inherit t :background "#262626"))))
+ '(linum ((t (:background "#282828" :foreground "#c4a000" :weight ultra-light :family "menlo"))))
+ '(my-long-line-face ((((class color)) (:background "gray10"))) t)
+ '(my-tab-face ((((class color)) (:background "grey10"))) t)
+ '(my-trailing-space-face ((((class color)) (:background "gray10"))) t)
+ '(region ((t (:inherit t :background "DeepSkyBlue"))))
+ '(show-paren-match ((t (:inverse-video t :weight normal))))
+ '(show-paren-mismatch ((t (:foreground "brightred" :inverse-video t :weight normal))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-default ((t (:inherit variable-pitch :foreground "grey75" :height 0.8))))
  '(tabbar-highlight ((t (:underline t))))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "cyan" :box (:line-width 1 :color "white" :style released-button)))))
- '(tabbar-selected ((t (:inherit tabbar-default :foreground "SpringGreen1" :underline "brightred" :slant italic :weight semi-bold))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "SpringGreen1" :underline "brightred" :slant oblique :weight semi-bold))))
  '(tabbar-separator ((t (:inherit tabbar-default))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
@@ -63,28 +187,32 @@
 (define-key global-map [(meta z)] `undo)
 (define-key global-map [(meta v)]  `clipboard-yank)
 (define-key global-map [(meta c)]  `copy-region-as-kill)
-(define-key global-map [(meta up)] `backward-paragraph)
-(define-key global-map [(meta down)]  `forward-paragraph)
+(define-key global-map [(meta up)] `beginning-of-buffer)
+(define-key global-map [(meta down)]  `end-of-buffer)
+
 (define-key global-map [(meta {)] `tabbar-backward)
 (define-key global-map [(meta })] `tabbar-forward)
 
+(define-key input-decode-map "\e\eOA" [(meta up)])
+(define-key input-decode-map "\e\eOB" [(meta down)])
+(global-set-key [(meta up)] 'backward-paragraph )
+(global-set-key [(meta down)] 'forward-paragraph )
+(global-set-key (kbd "C-c ;") 'iedit-mode)
 ;; Custom behavior
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Irony mode behavior
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
 
-;; replace the `completion-at-point' and `complete-symbol' bindings in
-;; irony-mode's buffers by irony-mode's asynchronous function
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-	'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-	'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(defun set-auto-complete-as-completion-at-point-function ()
+  (add-to-list 'completion-at-point-functions 'auto-complete))
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-to-list 'ac-modes 'haskell-interactive-mode)
+(add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'haskell-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(eval-after-load 'haskell-mode
+  '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
-;; Only needed on Windows
-(when (eq system-type 'windows-nt)
-  (setq w32-pipe-read-delay 0))
+(set-face-attribute 'default nil :height 160)
+(put 'downcase-region 'disabled nil)
+(setq ac-ignore-case nil)
+(setq reb-re-syntax 'string)
+(turn-on-pbcopy)

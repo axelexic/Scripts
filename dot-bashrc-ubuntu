@@ -3,11 +3,14 @@
 # for examples
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -20,24 +23,27 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -78,10 +84,17 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -95,67 +108,75 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  fi
 fi
 
+alias emacs='emacs -nw'
+alias ghci='ghci -v0'
 
-ANDROID_HOME=/mnt/hgfs/Android
-
-# Don't want to keep doing this
-
-function android_build_env {
-	if [ -f $ANDROID_HOME/src/build/envsetup.sh ]; then
-		. $ANDROID_HOME/src/build/envsetup.sh
-	fi
-}
-
-function android_sdk_env {
-	PATH=/opt/eclipse:$ANDROID_HOME/sdk/tools:$ANDROID_HOME/sdk/platform-tools:$PATH
-	export PATH
+toDec( ) {
+    printf "%d" "$1"
 }
 
 
-function android_ndk_env {
-	android_sdk_env
-	PATH=$ANDROID_HOME/ndk:$PATH
-	export PATH
+toHex( ) {
+    printf "0x%x" "$1"
 }
 
-function vm_home {
-	cd $ANDROID_HOME
+add( ) {
+    printf "%d" $(( $1 + $2 ))
 }
 
-
-function src_find {
-	EXPECTED_ARGS=2
-	
-	if [ $# -ne $EXPECTED_ARGS ] 
-	then
-		echo "Usage: src_find regex directory_to_find"
-		echo "       (e.g., $src_find '.*\.\(c\|h\|cpp\)' . )"
-		return 244
-	fi
-
-	find $2 -type f -iregex "$1" -print
-	echo 
+load_opam ( ) {
+    . $HOME/.opam/opam-init/init.sh
 }
 
-
-function src_grep(){
-
-        EXPECTED_ARGS=2
-
-        if [ $# -ne $EXPECTED_ARGS ]
-
-        then
-                echo "Usage: src_grep regex search_keyword"
-                echo "       (e.g. $ src_grep '.*\.\(c\|h\|cpp\)' \"hello world\n\" )  "
-                return
-        fi
-
-        find . -type f -iregex "$1" -print0 | xargs -0 grep --color -n "$2"
-        # find -E . -type f -iregex '.*\.\(c\|h\|cpp\)' -print0 | xargs -0 grep --color -n "$@"
-
+load_sgx_devenv ( ) {
+  . /opt/intel/sgxsdk/environment
 }
 
+# SGX Mount related issues
+ext_dev_dir="$HOME/Projects/cryptodome/external/sysroot-SGX"
+sgx_dev_mount_dir="/opt/cryptodome/sgx"
+
+mount_sgx_dev ( ) {
+    mountpoint $sgx_dev_mount_dir > /dev/null 2>&1
+    result=$?
+    if [ $result -ne 0 ];
+    then
+        sudo mount --bind $ext_dev_dir $sgx_dev_mount_dir
+        result=$?
+    else
+        echo "$sgx_dev_mount_dir is alredy mounted"
+    fi
+    return $result
+}
+
+unmount_sgx_dev ( ) {
+    mountpoint $sgx_dev_mount_dir > /dev/null 2>&1
+    result=$?
+    if [ $result -ne 0 ];
+    then
+        echo "$sgx_dev_mount_dir is not mounted"
+    else
+        sudo umount $sgx_dev_mount_dir
+        result=$?
+    fi
+    return $result
+}
+
+PATH=$PATH:$HOME/.cabal/bin:/opt/sublime_text:/opt/ghc/bin
+PATH=$PATH:$JULIA_DIR/bin
+export PATH
+export EDITOR="emacs -nw"
+alias python=python3
+alias ipython=ipython3
+alias pip=pip3
+alias gdb=/opt/intel/sgxsdk/bin/sgx-gdb
+load_opam
+load_sgx_devenv

@@ -1,8 +1,0 @@
-{
-	"add_to_PATH":
-	[
-		"/Volumes/Apprentice/Workspace/Cabal/bin",
-        "/Volumes/Apprentice/Workspace/macports/bin"
-	],
-	"enable_hdevtools": true
-}
