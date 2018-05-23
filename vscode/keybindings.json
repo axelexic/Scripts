@@ -1,3 +1,4 @@
+
 // Place your key bindings in this file to overwrite the defaults
 [
   {
@@ -8,5 +9,129 @@
   {
     "key": "ctrl+x o",
     "command": "workbench.action.nextEditorInGroup"
-  }
+  },
+  {
+    "key": "ctrl+x p",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "shift+alt+,",
+    "command": "cursorTop",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "cursorBottom",
+    "when": "textInputFocus"
+  },
+  {"key" : "ctrl+f", "command":"actions.find", "when": "!findWidgetVisible"},
+  { "key": "alt+up",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly" },
+  { "key": "ctrl+space",            "command": "editor.action.triggerSuggest",
+      "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly" },
+{ "key": "ctrl+r",                "command": "editor.action.startFindReplaceAction" },
+{ "key": "alt+shift+right",      "command": "cursorWordEndRightSelect",
+  "when": "textInputFocus" },
+  { "key": "alt+shift+left",      "command": "cursorWordStartLeftSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "f2",
+    "command": "workbench.action.selectTheme"
+  },
+  {
+    "key": "ctrl+k ctrl+t",
+    "command": "-workbench.action.selectTheme"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "workbench.action.zoomReset"
+  },
+  {
+    "key": "ctrl+numpad0",
+    "command": "-workbench.action.zoomReset"
+  },
+  {
+    "key": "ctrl+shift+=",
+    "command": "workbench.action.zoomIn"
+  },
+  {
+    "key": "ctrl+=",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "workbench.action.zoomOut"
+  },
+  {
+    "key": "ctrl+numpad_subtract",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+x ctrl+s",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "cursorEndSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+end",
+    "command": "-cursorEndSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "end",
+    "command": "-cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+left",
+    "command": "emacs.cursorWordLeft",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+b",
+    "command": "-emacs.cursorWordLeft",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "emacs.cursorWordRight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+f",
+    "command": "-emacs.cursorWordRight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleActivityBarVisibility"
+ },
+ {
+  "key": "ctrl+b",
+  "command": "workbench.action.toggleSidebarVisibility"
+} 
 ]
