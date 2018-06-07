@@ -55,6 +55,9 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
+ '(irony-cdb-search-directory-list
+   (quote
+    ("." "build" ".." "../.." "../../../" "../../../../")))
  '(irony-server-install-prefix "/home/swami/.emacs.d/irony/bin")
  '(linum-format "%5d ")
  '(make-backup-files nil)
@@ -134,7 +137,13 @@
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook
+          'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook #'irony-eldoc)
+
+;; (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
+
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
 
