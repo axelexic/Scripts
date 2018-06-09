@@ -2,17 +2,14 @@
 // Place your key bindings in this file to overwrite the defaults
 [
   {
-    "key": "ctrl+v",
-    "command": "editor.action.clipboardPasteAction",
+    "key": "ctrl+x ctrl+w",
+    "command": "editor.action.clipboardCutAction",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+x o",
-    "command": "workbench.action.nextEditorInGroup"
-  },
-  {
-    "key": "ctrl+x p",
-    "command": "workbench.action.previousEditorInGroup"
+    "key": "ctrl+v",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus"
   },
   {
     "key": "shift+alt+,",
@@ -28,7 +25,8 @@
   { "key": "alt+up",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly" },
-  { "key": "ctrl+space",            "command": "editor.action.triggerSuggest",
+
+    { "key": "ctrl+space",            "command": "editor.action.triggerSuggest",
       "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly" },
 { "key": "ctrl+r",                "command": "editor.action.startFindReplaceAction" },
 { "key": "alt+shift+right",      "command": "cursorWordEndRightSelect",
@@ -90,7 +88,7 @@
     "key": "ctrl+shift+e",
     "command": "cursorEndSelect",
     "when": "textInputFocus"
-  },
+  }, 
   {
     "key": "shift+end",
     "command": "-cursorEndSelect",
@@ -107,31 +105,51 @@
     "when": "textInputFocus"
   },
   {
-    "key": "alt+left",
-    "command": "emacs.cursorWordLeft",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+b",
-    "command": "-emacs.cursorWordLeft",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+right",
-    "command": "emacs.cursorWordRight",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+f",
-    "command": "-emacs.cursorWordRight",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "ctrl+shift+b",
     "command": "workbench.action.toggleActivityBarVisibility"
  },
  {
   "key": "ctrl+b",
   "command": "workbench.action.toggleSidebarVisibility"
-} 
+},
+{
+  "key": "shift+meta+]",
+  "command": "workbench.action.nextEditor"
+},
+{
+  "key": "ctrl+pagedown",
+  "command": "-workbench.action.nextEditor"
+},
+{
+  "key": "shift+meta+[",
+  "command": "workbench.action.previousEditor"
+},
+{
+  "key": "ctrl+pageup",
+  "command": "-workbench.action.previousEditor"
+},
+{
+  "key": "alt+backspace",
+  "command": "workbench.action.terminal.deleteWordLeft",
+  "when": "terminalFocus"
+},
+{
+  "key": "ctrl+backspace",
+  "command": "-workbench.action.terminal.deleteWordLeft",
+  "when": "terminalFocus"
+},
+{
+  "key": "alt+left",
+  "command": "cursorWordEndLeft"
+},
+{
+  "key": "alt+right",
+  "command": "cursorWordEndRight",
+  "when": "textInputFocus"
+},
+{
+  "key": "ctrl+right",
+  "command": "-cursorWordEndRight",
+  "when": "textInputFocus"
+}
 ]

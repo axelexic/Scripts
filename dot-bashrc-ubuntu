@@ -119,64 +119,34 @@ fi
 alias emacs='emacs -nw'
 alias ghci='ghci -v0'
 
-toDec( ) {
-    printf "%d" "$1"
+emacsw2( ) {
+    /usr/local/bin/emacs -fs "$@" > /dev/null 2>&1 &
+    wmctrl -s 1
+    fg
 }
 
-
-toHex( ) {
-    printf "0x%x" "$1"
+emacsw( ) {
+    emacsw2 "$@" && wmctrl -s 0
 }
 
-add( ) {
-    printf "%d" $(( $1 + $2 ))
-}
-
-load_opam ( ) {
-    . $HOME/.opam/opam-init/init.sh
-}
-
-load_sgx_devenv ( ) {
-  . /opt/intel/sgxsdk/environment
-}
-
-# SGX Mount related issues
-ext_dev_dir="$HOME/Projects/cryptodome/external/sysroot-SGX"
-sgx_dev_mount_dir="/opt/cryptodome/sgx"
-
-mount_sgx_dev ( ) {
-    mountpoint $sgx_dev_mount_dir > /dev/null 2>&1
-    result=$?
-    if [ $result -ne 0 ];
+load_sgx( ) {
+    if [ -f /opt/intel/sgxsdk/environment ]
     then
-        sudo mount --bind $ext_dev_dir $sgx_dev_mount_dir
-        result=$?
-    else
-        echo "$sgx_dev_mount_dir is alredy mounted"
+        source /opt/intel/sgxsdk/environment
+        SGXSDK_INSTALL_DIR=/opt/intel/sgxsdk
+        export PATH="$SGXSDK_INSTALL_DIR/bin/x64":$PATH
+        alias gdb=sgx-gdb
     fi
-    return $result
 }
 
-unmount_sgx_dev ( ) {
-    mountpoint $sgx_dev_mount_dir > /dev/null 2>&1
-    result=$?
-    if [ $result -ne 0 ];
-    then
-        echo "$sgx_dev_mount_dir is not mounted"
-    else
-        sudo umount $sgx_dev_mount_dir
-        result=$?
-    fi
-    return $result
-}
+if [ -f /home/swami/.opam/opam-init/init.sh ]
+then
+    . /home/swami/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+fi
 
-PATH=$PATH:$HOME/.cabal/bin:/opt/sublime_text:/opt/ghc/bin
-PATH=$PATH:$JULIA_DIR/bin
+PATH=$PATH:$HOME/.cabal/bin:/opt/sublime_text
+
+export PYTHONSTARTUP=$HOME/.pythonrc
 export PATH
-export EDITOR="emacs -nw"
-alias python=python3
-alias ipython=ipython3
-alias pip=pip3
-alias gdb=/opt/intel/sgxsdk/bin/sgx-gdb
-load_opam
-load_sgx_devenv
+
+load_sgx
