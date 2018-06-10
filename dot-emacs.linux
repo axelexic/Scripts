@@ -1,85 +1,110 @@
-(package-initialize)
+;; (package-initialize)
 (require 'xcscope)
 (require 'ac-haskell-process)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
  '(c-basic-offset 2)
  '(c-default-style
-   (quote
-    ((c-mode . "")
+   '((c-mode . "")
      (c++-mode . "")
      (objc-mode . "")
      (awk-mode . "awk")
-     (other . "gnu"))))
- '(c-offsets-alist (quote ((label . 0) (inextern-lang . 0) (innamespace . 0))))
+     (other . "gnu")))
+ '(c-offsets-alist '((label . 0) (inextern-lang . 0) (innamespace . 0)))
  '(c-report-syntactic-errors t)
  '(change-major-mode-with-file-name t)
  '(column-number-mode t)
- '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (monokai)))
+ '(compilation-message-face 'default)
+ '(custom-enabled-themes '(yogesh-tango-dark))
  '(custom-safe-themes
-   (quote
-    ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" default)))
+   '("949302794ad4d56e03b21c6bb0c29d3faada35f5ca52a7a6c071b328f575c23c" "054721d1d6004e819158aa1678958ddcf676f7066cb92441e248dc2292b68b25" "5f4e4c9f5de8156f964fdf8a1b8f8f659efbfeff88b38f49ce13953a84272b77" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" default))
  '(display-time-day-and-date t)
  '(display-time-format "%D (%A) | %R ")
  '(display-time-mode t)
+ '(fci-rule-color "#3C3D37")
  '(fill-column 60)
  '(font-lock-maximum-decoration t)
  '(global-company-mode t)
- '(global-flycheck-mode t)
  '(global-hl-line-mode t)
  '(global-linum-mode t)
  '(haskell-doc-prettify-types nil)
  '(haskell-font-lock-symbols nil)
  '(haskell-hoogle-command "/home/swami/.cabal/bin/hoogle")
  '(haskell-indent-spaces 2)
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-haskell-doc)))
+ '(haskell-mode-hook '(turn-on-haskell-indentation turn-on-haskell-doc))
  '(haskell-process-path-cabal "/usr/local/bin/cabal")
  '(haskell-process-path-cabal-ghci "/usr/local/bin/cabal repl")
  '(haskell-process-path-ghci "/usr/local/bin/ghci")
  '(haskell-process-prompt-restart-on-cabal-change nil)
  '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote ghci))
+ '(haskell-process-type 'ghci)
  '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
- '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
- '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(highlight-tail-colors
+   '(("#3C3D37" . 0)
+     ("#679A01" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#3C3D37" . 100)))
+ '(hl-paren-colors '("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900"))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(irony-cdb-search-directory-list
-   (quote
-    ("." "build" ".." "../.." "../../../" "../../../../")))
+ '(irony-cdb-search-directory-list '("." ".." "../.." "../../../" "../../../../"))
  '(irony-server-install-prefix "/home/swami/.emacs.d/irony/bin")
  '(linum-format "%5d ")
+ '(magit-diff-use-overlays nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/"))))
+   '(("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/")))
  '(package-selected-packages
-   (quote
-    (irony forth-mode csharp-mode fsharp-mode fstar-mode darkokai-theme xcscope utop tuareg tabbar pbcopy monokai-theme llvm-mode irony-eldoc idris-mode flycheck-irony company-irony-c-headers company-irony column-marker cmake-mode clang-format ac-haskell-process)))
+   '(utop irony forth-mode csharp-mode fsharp-mode darkokai-theme xcscope tuareg tabbar pbcopy monokai-theme llvm-mode irony-eldoc idris-mode company-irony-c-headers company-irony column-marker clang-format ac-haskell-process))
+ '(pos-tip-background-color "#FFFACE")
+ '(pos-tip-foreground-color "#272822")
+ '(scroll-bar-mode nil)
  '(show-paren-delay 0.25)
  '(show-paren-mode t)
- '(show-paren-style (quote mixed))
+ '(show-paren-style 'mixed)
  '(size-indication-mode t)
  '(tab-width 2)
  '(tabbar-background-color nil)
  '(tabbar-mode t nil (tabbar))
  '(tabbar-mwheel-mode t nil (tabbar))
- '(tabbar-separator (quote (" | ")))
+ '(tabbar-separator '(" | "))
  '(tabbar-use-images nil)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   '((20 . "#F92672")
+     (40 . "#CF4F1F")
+     (60 . "#C26C0F")
+     (80 . "#E6DB74")
+     (100 . "#AB8C00")
+     (120 . "#A18F00")
+     (140 . "#989200")
+     (160 . "#8E9500")
+     (180 . "#A6E22E")
+     (200 . "#729A1E")
+     (220 . "#609C3C")
+     (240 . "#4E9D5B")
+     (260 . "#3C9F79")
+     (280 . "#A1EFE4")
+     (300 . "#299BA6")
+     (320 . "#2896B5")
+     (340 . "#2790C3")
+     (360 . "#66D9EF")))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   '(unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
 
 
 (custom-set-faces
@@ -87,14 +112,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background nil :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 162 :width normal :family "Inconsolata"))))
- '(error ((t (:foreground "firebrick1"))))
- '(fixed-pitch ((t (:family "Inconsolata"))))
- '(linum ((t (:background nil :foreground nil :weight ultra-light :family "Inconsolata"))))
  '(show-paren-match ((t (:inverse-video t :weight normal))))
  '(show-paren-mismatch ((t (:foreground "brightred" :inverse-video t :weight normal))))
  '(tabbar-separator ((t (:inherit tabbar-default))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
+
+(set-face-attribute 'default nil :height 160)
 
 ;; Keyboard customization:
 
@@ -110,7 +133,7 @@
 (define-key global-map [\C-kp-right]  `mark-sexp)
 (define-key global-map  "\C-c\C-i"  `cscope-set-initial-directory)
 (define-key global-map  "\C-c\C-r"  `cscope-unset-initial-directory)
-(define-key global-map  [f1] `cscope-pop-mark)
+;; (define-key global-map  [f1] `cscope-pop-mark)
 (define-key global-map  [f2] `cscope-find-this-text-string)
 (define-key global-map  [f3] `cscope-find-functions-calling-this-function)
 (define-key global-map  [f4]  `cscope-find-this-symbol)
@@ -141,9 +164,6 @@
           'irony-cdb-autosetup-compile-options)
 (add-hook 'irony-mode-hook #'irony-eldoc)
 
-;; (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-
-
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
 
@@ -156,7 +176,6 @@
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
-(set-face-attribute 'default nil :height 160)
 (put 'downcase-region 'disabled nil)
 (setq ac-ignore-case nil)
 (setq reb-re-syntax 'string)
